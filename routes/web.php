@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmpleadoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/inicio', function () {
-    return view('rifa.index');
-});
+// Route::get('/inicio', function () {
+//     return view('rifa.index');
+// });
+
+Route::get('inicio', [EmpleadoController::class, 'vaciaGeneral'])->name('inicio');
+Route::get('empleados', [EmpleadoController::class, 'index'])->name('empleados');
+Route::get('empezar', [EmpleadoController::class, 'inicio'])->name('empezar');
+Route::get('todos', [EmpleadoController::class, 'generarTodos'])->name('todos');
+
+
+Route::get('especial', [EmpleadoController::class, 'vaciaEspecial'])->name('especial');
+Route::get('sorteoEspecial', [EmpleadoController::class, 'especiales'])->name('sorteoEspecial');
+
+Route::get('ganadoresGe', [EmpleadoController::class, 'ganadoresGeneral'])->name('ganadoresGe');
+Route::get('ganadoresEsp', [EmpleadoController::class, 'ganadoresEspecial'])->name('ganadoresEsp');
+
+

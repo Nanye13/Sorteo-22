@@ -9,14 +9,10 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
     </script>
-    <link
-        href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap" rel="stylesheet">
     <!-- Styles -->
     <style>
         /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -279,9 +275,9 @@
         .antialiased {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            /* background-image: url(img/fondo1.jpg);
+            background-image: url(img/fondo1.jpg);
             background-repeat: no-repeat;
-            background-size: cover; */
+            background-size: cover;
         }
 
         .w-5 {
@@ -419,124 +415,190 @@
 </head>
 
 <body class="antialiased">
-
-    <header style="height: 200px; background-image: url(img/fondo1.jpg);background-repeat: no-repeat; background-size: cover;">
+    <header style="height: 200px">
 
     </header>
+    <div class="container-fluid">
+        <div style="margin-bottom: 15px; text-align: center">
+        <input type="text" id="seguir" value="0" hidden>
 
+            <div class="d-grid gap-2 d-md-block">
+                <button id="detener" class="btn btn-danger btn-lg" hidden>Detener</button>
+                <button id="continuar" class="btn btn-success btn-lg"  >Empezar</button>
+                <a type="button" class="btn btn-info btn-lg" onclick="location.href = 'todos'">Rifar todos</a>
 
-    {{-- <div class="conatiner-fluid"> --}}
+                <a type="button" class="btn btn-warning btn-lg" onclick="location.href = 'inicio'">Limpiar</a>
 
-        <div class="container-fluid">
-            <div style="margin-bottom: 15px; text-align: center">
-                <div class="d-grid gap-2 d-md-block">
-                    <a type="button" class="btn btn-success btn-lg" onclick="location.href = '/empezar'">Iniciar Rifa
-                        General</a>
-                    <a type="button" class="btn btn-info btn-lg" style="color: white;"
-                        onclick="location.href = '/especial'">Iniciar Rifa Especial</a>
-                </div>
+                <!-- <a type="button" class="btn btn-info btn-lg" style="color: white;" onclick="location.href = '/especial'">Iniciar Rifa Especial</a> -->
             </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-2">
 
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="card mb-3">
-                                <div class="row g-0">
-                                    <div class="col-md-2">
-
-                                        <img src="img/ganador1.webp" class="img-fluid rounded-start" alt="...">
-                                    </div>
-                                    <div class="col-md-10">
-                                        <div class="card-body">
-                                            <h5 class="card-title" style="font-family:Poppins ">GANADOR</h5>
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th style="font-family:Poppins">No. Empleado</th>
-                                                            <th style="font-family:Poppins">Nombre</th>
-                                                            <th style="font-family:Poppins">Dirección</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="font-family:Poppins"></td>
-                                                            <td style="font-family:Poppins"></td>
-                                                            <td style="font-family:Poppins"></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
+                                    <img src="img/ganador1.webp" class="img-fluid rounded-start" alt="...">
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="card mb-3">
-                                <div class="row g-0">
-                                    <div class="col-md-2">
-                                        <img src="img/reglo.webp" class="img-fluid rounded-start" alt="...">
-                                    </div>
-                                    <div class="col-md-10">
-                                        <div class="card-body">
-                                            <h5 class="card-title" style="font-family:Poppins">REGALO</h5>
-                                            <div>
-                                                <table class="table">
+                                <div class="col-md-10">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="font-family:Poppins ">GANADOR</h5>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
                                                     <tr>
-                                                        <th style="font-family:Poppins">Descripción</th>
+                                                        <th style="font-family:Poppins">No. Empleado</th>
+                                                        <th style="font-family:Poppins">Nombre</th>
+                                                        <th style="font-family:Poppins">Dirección</th>
                                                     </tr>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="font-family:Poppins"></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
+                                                </thead>
+                                                <tbody>
+                                                    <?php if(isset($empleado)): ?>
+                                                    <tr>
+                                                        <td style="font-family:Poppins">{{$empleado->numero_empleado}}</td>
+                                                        <td style="font-family:Poppins">{{$empleado->nombre_empleado}}</td>
+                                                        <td style="font-family:Poppins">{{$empleado->direccion}}</td>
+                                                    </tr>
+                                                    <?php endif ?>
+                                                </tbody>
+                                            </table>
                                         </div>
+
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {{-- Lista de Ganadores --}}
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES
-                            </h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Número de empleado</th>
-                                            <th>Nombre</th>
-                                            <th>Regalo</th>
-                                            <th>Dirección</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                    <div class="col-sm-6">
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-2">
+                                    <img src="img/reglo.webp" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="font-family:Poppins">REGALO</h5>
+                                        <div>
+                                            <table class="table">
+                                                <tr>
+                                                    <th style="font-family:Poppins">Descripción</th>
+                                                </tr>
+                                                <tbody>
+                                                <?php if(isset($regalo)): ?>
+                                                    <tr>
+                                                        <td style="font-family:Poppins">{{$regalo->nombre_regalo}}</td>
+                                                    </tr>
+                                                    <?php endif ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- <p style="font-family:Poppins">Nancy</p> -->
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                {{-- Lista de Ganadores --}}
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Número de empleado</th>
+                                        <th>Nombre</th>
+                                        <th>Regalo</th>
+                                        <th>Dirección</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($arregloGanadores as $ganador)
 
-        {{-- </div> --}}
+                                    <tr>
+                                        <td>{{$ganador['numero_empleado']}}</td>
+                                        <td>{{$ganador['nombre_empleado']}}</td>
+                                        <td> {{$ganador['nombre_regalo']}}</td>
+                                        <td>{{$ganador['direccion']}}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script>
+        document.getElementById("detener").addEventListener("click", detener);
+        document.getElementById("continuar").addEventListener("click", seguir);
+
+        function detener() {
+            $("#continuar").removeAttr('hidden');
+            $('#seguir').val('0');
+            $("#detener").prop("hidden", true);
+        }
+
+        function seguir() {
+            $("#detener").removeAttr('hidden');
+            $('#seguir').val('1');
+            $("#continuar").prop("hidden", true);
+        }
+
+        function autoFocus() {
+            if ($('#seguir').val() == 1) {
+                window.location.href = "{{ route('empleados')}}";
+            }
+        }
+        setInterval('autoFocus()', 5000);
+        var udateTime = function() {
+        console.log("hola");
+        // Variables de la fecha y hora
+        let currentDate = new Date(),
+            hours = currentDate.getHours(),
+            minutes = currentDate.getMinutes(),
+            seconds = currentDate.getSeconds(),
+            weekDay = currentDate.getDay(),
+            day = currentDate.getDay(),
+            month = currentDate.getMonth(),
+            year = currentDate.getFullYear();
+
+        // Condiciones de cuando agregar un 0 en minutos
+        if (minutes < 10) {
+            minutes = "0" + minutes
+        }
+        // Condicion con los segundos
+        if (seconds < 10) {
+            seconds = "0" + seconds
+        }
+        // Formato de 12 horas 
+        var newformat = hours >= 12 ? 'PM' : 'AM';
+        // Dividimos las horas
+        hours = hours % 12;
+        // To display "0" as "12"
+        hours = hours ? hours : 12;
+        // Elemntos de la vista
+        document.getElementById('hours').textContent = hours;
+        document.getElementById('minutes').textContent = minutes;
+        document.getElementById('seconds').textContent = seconds;
+        document.getElementById('zona').textContent = newformat;
+    };
+
+    udateTime();
+
+    setInterval(udateTime, 1000);
+    </script>
 </body>
+
 
 </html>

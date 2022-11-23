@@ -279,9 +279,9 @@
         .antialiased {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            /* background-image: url(img/fondo1.jpg);
+            background-image: url(img/fondo.jpg);
             background-repeat: no-repeat;
-            background-size: cover; */
+            background-size: cover;
         }
 
         .w-5 {
@@ -419,124 +419,175 @@
 </head>
 
 <body class="antialiased">
-
-    <header style="height: 200px; background-image: url(img/fondo1.jpg);background-repeat: no-repeat; background-size: cover;">
+    <header style="height: 200px">
 
     </header>
+    <div class="container-fluid">
+        <div style="margin-bottom: 15px; text-align: center">
+            <div class="d-grid gap-2 d-md-block">
+                <!-- <a type="button" class="btn btn-success btn-lg" onclick="location.href = '/empleados'">Rifa General</a> -->
+                <!-- <a type="button" class="btn btn-info btn-lg" style="color: white;" onclick="location.href = '/especial'">Iniciar Rifa Especial</a> -->
+
+                <?php if ($cantidad_regalos == 1) : ?>
+                <!-- <a href="/ganadoresEsp">FINALIZAR</a> -->
+                <input type='button' class="btn btn-danger" style="margin-bottom: 10px;" value='FINALIZAR'
+                    onclick="location.href = '/ganadoresEsp'" />
 
 
-    {{-- <div class="conatiner-fluid"> --}}
+                <?php else : ?>
+                <!-- <a href="/sorteoEspecial">INICIAR</a> -->
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Launch demo modal
+                </button>
+                <input type='button' class="btn btn-success" style="margin-bottom: 10px;" value='Seguir'
+                    onclick="location.href = '/sorteoEspecial'" />
 
-        <div class="container-fluid">
-            <div style="margin-bottom: 15px; text-align: center">
-                <div class="d-grid gap-2 d-md-block">
-                    <a type="button" class="btn btn-success btn-lg" onclick="location.href = '/empezar'">Iniciar Rifa
-                        General</a>
-                    <a type="button" class="btn btn-info btn-lg" style="color: white;"
-                        onclick="location.href = '/especial'">Iniciar Rifa Especial</a>
-                </div>
+                <?php endif ?>
+
+                <!-- <a href="/especial">Limpiar</a> -->
+                <input type='button' class="btn btn-warning" style="margin-bottom: 10px;" value='Limpiar'
+                    onclick="location.href = '/especial'" />
+                <input type='button' class="btn btn-warning" style="margin-bottom: 10px;" value='abrir'
+                    onclick="abrir()" />
             </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <!-- Modal -->
+                <div class="modal fade gif" id="gif" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body"
+                                style="background-image: url(img/confetti2.gif);background-size: cover; background-position: 50%">
 
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="card mb-3">
-                                <div class="row g-0">
-                                    <div class="col-md-2">
+                                <img src="img/tombola.gif" alt="">
+                            </div>
+                            <div class="modal-footer">
 
-                                        <img src="img/ganador1.webp" class="img-fluid rounded-start" alt="...">
-                                    </div>
-                                    <div class="col-md-10">
-                                        <div class="card-body">
-                                            <h5 class="card-title" style="font-family:Poppins ">GANADOR</h5>
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th style="font-family:Poppins">No. Empleado</th>
-                                                            <th style="font-family:Poppins">Nombre</th>
-                                                            <th style="font-family:Poppins">Dirección</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="font-family:Poppins"></td>
-                                                            <td style="font-family:Poppins"></td>
-                                                            <td style="font-family:Poppins"></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="card mb-3">
-                                <div class="row g-0">
-                                    <div class="col-md-2">
-                                        <img src="img/reglo.webp" class="img-fluid rounded-start" alt="...">
-                                    </div>
-                                    <div class="col-md-10">
-                                        <div class="card-body">
-                                            <h5 class="card-title" style="font-family:Poppins">REGALO</h5>
-                                            <div>
-                                                <table class="table">
+                    </div>
+                </div>
+                {{-- Fin modal --}}
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-2">
+
+                                    <img src="img/ganador1.webp" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="font-family:Poppins ">GANADOR</h5>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
                                                     <tr>
-                                                        <th style="font-family:Poppins">Descripción</th>
+                                                        <th style="font-family:Poppins">No. Empleado</th>
+                                                        <th style="font-family:Poppins">Nombre</th>
+                                                        <th style="font-family:Poppins">Dirección</th>
                                                     </tr>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="font-family:Poppins"></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="font-family:Poppins">{{ $empleado->numero_empleado }}
+                                                        </td>
+                                                        <td style="font-family:Poppins">{{ $empleado->nombre_empleado }}
+                                                        </td>
+                                                        <td style="font-family:Poppins">{{ $empleado->direccion }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
+
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {{-- Lista de Ganadores --}}
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES
-                            </h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Número de empleado</th>
-                                            <th>Nombre</th>
-                                            <th>Regalo</th>
-                                            <th>Dirección</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                    <div class="col-sm-6">
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-2">
+                                    <img src="img/reglo.webp" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="font-family:Poppins">REGALO</h5>
+                                        <div>
+                                            <table class="table">
+                                                <tr>
+                                                    <th style="font-family:Poppins">Descripción</th>
+                                                </tr>
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="font-family:Poppins">{{ $regalo->nombre_regalo }}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- <p style="font-family:Poppins">Nancy</p> -->
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                {{-- Lista de Ganadores --}}
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Número de empleado</th>
+                                        <th>Nombre</th>
+                                        <th>Regalo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($arregloGanadores as $ganador)
+                                        <tr>
+                                            <td> {{ $ganador['numero_empleado'] }}</td>
+                                            <td>{{ $ganador['nombre_empleado'] }}</td>
+                                            <td>{{ $ganador['nombre_regalo'] }}</td>
+                                        </tr>
+                                    @endforeach
 
-        {{-- </div> --}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    function abrir() {
+        //console.log("entro")
+        $('#gif').modal('show');
+        //abrir modal
+        setTimeout(() => {
+            $('#gif').modal('hide');
+            window.location.href = "{{ route('sorteoEspecial')}}";
+        }, 3000);
+    }
+</script>
 
 </html>

@@ -9,14 +9,10 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
     </script>
-    <link
-        href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap" rel="stylesheet">
     <!-- Styles -->
     <style>
         /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -279,9 +275,9 @@
         .antialiased {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            /* background-image: url(img/fondo1.jpg);
+            background-image: url(img/fondo.jpg);
             background-repeat: no-repeat;
-            background-size: cover; */
+            background-size: cover;
         }
 
         .w-5 {
@@ -419,123 +415,50 @@
 </head>
 
 <body class="antialiased">
-
-    <header style="height: 200px; background-image: url(img/fondo1.jpg);background-repeat: no-repeat; background-size: cover;">
+    <header style="height: 200px">
 
     </header>
-
-
-    {{-- <div class="conatiner-fluid"> --}}
-
-        <div class="container-fluid">
-            <div style="margin-bottom: 15px; text-align: center">
-                <div class="d-grid gap-2 d-md-block">
-                    <a type="button" class="btn btn-success btn-lg" onclick="location.href = '/empezar'">Iniciar Rifa
-                        General</a>
-                    <a type="button" class="btn btn-info btn-lg" style="color: white;"
-                        onclick="location.href = '/especial'">Iniciar Rifa Especial</a>
-                </div>
+    <div class="container-fluid">
+        <div style="margin-bottom: 15px; text-align: center">
+            <div class="d-grid gap-2 d-md-block">
+                <a type="button" class="btn btn-success btn-lg" onclick="location.href = '/empleados'">Iniciar Rifa General</a>
+                <a type="button" class="btn btn-info btn-lg" style="color: white;" onclick="location.href = '/especial'">Iniciar Rifa Especial</a>
             </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="card mb-3">
-                                <div class="row g-0">
-                                    <div class="col-md-2">
-
-                                        <img src="img/ganador1.webp" class="img-fluid rounded-start" alt="...">
-                                    </div>
-                                    <div class="col-md-10">
-                                        <div class="card-body">
-                                            <h5 class="card-title" style="font-family:Poppins ">GANADOR</h5>
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th style="font-family:Poppins">No. Empleado</th>
-                                                            <th style="font-family:Poppins">Nombre</th>
-                                                            <th style="font-family:Poppins">Dirección</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="font-family:Poppins"></td>
-                                                            <td style="font-family:Poppins"></td>
-                                                            <td style="font-family:Poppins"></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="card mb-3">
-                                <div class="row g-0">
-                                    <div class="col-md-2">
-                                        <img src="img/reglo.webp" class="img-fluid rounded-start" alt="...">
-                                    </div>
-                                    <div class="col-md-10">
-                                        <div class="card-body">
-                                            <h5 class="card-title" style="font-family:Poppins">REGALO</h5>
-                                            <div>
-                                                <table class="table">
-                                                    <tr>
-                                                        <th style="font-family:Poppins">Descripción</th>
-                                                    </tr>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="font-family:Poppins"></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                
+                {{-- Lista de Ganadores --}}
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES</h5>
                     </div>
-                    {{-- Lista de Ganadores --}}
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES
-                            </h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Número de empleado</th>
-                                            <th>Nombre</th>
-                                            <th>Regalo</th>
-                                            <th>Dirección</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Número de empleado</th>
+                                        <th>Nombre</th>
+                                        <th>Regalo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($ganadoresGeneral as $ganador)
+                                    <tr>
+                                        <td> {{$ganador['numero_empleado']}}</td>
+                                        <td>{{$ganador['nombre_empleado']}}</td>
+                                        <td> {{$ganador['nombre_regalo']}}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-        {{-- </div> --}}
     </div>
 </body>
 

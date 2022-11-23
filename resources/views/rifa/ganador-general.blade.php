@@ -26,7 +26,12 @@
         }
 
         body {
-            margin: 0
+            margin: 0;
+            background-image: url(img/fondo1.jpg);
+            /* background-position: center center; */
+            background-repeat: no-repeat;
+            /* background-attachment: fixed; */
+            background-size: cover;
         }
 
         a {
@@ -419,123 +424,55 @@
 </head>
 
 <body class="antialiased">
+    
+    <header style="height: 200px" >
+        {{-- <div style="background-image: url(img/fondo1.jpg);background-size: cover;">
 
-    <header style="height: 200px; background-image: url(img/fondo1.jpg);background-repeat: no-repeat; background-size: cover;">
-
+        </div> --}}
     </header>
-
-
-    {{-- <div class="conatiner-fluid"> --}}
-
-        <div class="container-fluid">
-            <div style="margin-bottom: 15px; text-align: center">
-                <div class="d-grid gap-2 d-md-block">
-                    <a type="button" class="btn btn-success btn-lg" onclick="location.href = '/empezar'">Iniciar Rifa
-                        General</a>
-                    <a type="button" class="btn btn-info btn-lg" style="color: white;"
-                        onclick="location.href = '/especial'">Iniciar Rifa Especial</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="card mb-3">
-                                <div class="row g-0">
-                                    <div class="col-md-2">
-
-                                        <img src="img/ganador1.webp" class="img-fluid rounded-start" alt="...">
-                                    </div>
-                                    <div class="col-md-10">
-                                        <div class="card-body">
-                                            <h5 class="card-title" style="font-family:Poppins ">GANADOR</h5>
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th style="font-family:Poppins">No. Empleado</th>
-                                                            <th style="font-family:Poppins">Nombre</th>
-                                                            <th style="font-family:Poppins">Dirección</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="font-family:Poppins"></td>
-                                                            <td style="font-family:Poppins"></td>
-                                                            <td style="font-family:Poppins"></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="card mb-3">
-                                <div class="row g-0">
-                                    <div class="col-md-2">
-                                        <img src="img/reglo.webp" class="img-fluid rounded-start" alt="...">
-                                    </div>
-                                    <div class="col-md-10">
-                                        <div class="card-body">
-                                            <h5 class="card-title" style="font-family:Poppins">REGALO</h5>
-                                            <div>
-                                                <table class="table">
-                                                    <tr>
-                                                        <th style="font-family:Poppins">Descripción</th>
-                                                    </tr>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="font-family:Poppins"></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <div class="container-fluid">
+        <div style="margin-bottom: 15px; text-align: center">
+            <div class="d-grid gap-2 d-md-block">
+                <a type="button" class="btn btn-success btn-lg" onclick="location.href = '/empleados'">Iniciar Rifa General</a>
+                <a type="button" class="btn btn-info btn-lg" style="color: white;" onclick="location.href = '/especial'">Iniciar Rifa Especial</a>
+              </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+            
+                {{-- Lista de Ganadores --}}
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES</h5>
                     </div>
-                    {{-- Lista de Ganadores --}}
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES
-                            </h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Número de empleado</th>
-                                            <th>Nombre</th>
-                                            <th>Regalo</th>
-                                            <th>Dirección</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Número de empleado</th>
+                                        <th>Nombre</th>
+                                        <th>Regalo</th>
+                                        <th>Dirección</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($ganadoresGeneral as $ganador)
+                                    <tr>
+                                        <td>{{$ganador['numero_empleado']}}</td>
+                                        <td>{{$ganador['nombre_empleado']}}</td>
+                                        <td>{{$ganador['nombre_regalo']}}</td>
+                                        <td>{{$ganador['direccion']}}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-        {{-- </div> --}}
     </div>
 </body>
 

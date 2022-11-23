@@ -279,9 +279,9 @@
         .antialiased {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            /* background-image: url(img/fondo1.jpg);
+            background-image: url(img/fondo.jpg);
             background-repeat: no-repeat;
-            background-size: cover; */
+            background-size: cover;
         }
 
         .w-5 {
@@ -419,123 +419,112 @@
 </head>
 
 <body class="antialiased">
-
-    <header style="height: 200px; background-image: url(img/fondo1.jpg);background-repeat: no-repeat; background-size: cover;">
+    <header style="height: 200px">
 
     </header>
+    <div class="container-fluid">
+        <div style="margin-bottom: 15px; text-align: center">
+            <div class="d-grid gap-2 d-md-block">
+                <!-- <a type="button" class="btn btn-success btn-lg" onclick="location.href = '/empleados'">Iniciar Rifa General</a> -->
+                <a type="button" class="btn btn-info btn-lg" style="color: white;" onclick="location.href = '/sorteoEspecial'">Iniciar Rifa Especial</a>
+              </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-2">
 
-
-    {{-- <div class="conatiner-fluid"> --}}
-
-        <div class="container-fluid">
-            <div style="margin-bottom: 15px; text-align: center">
-                <div class="d-grid gap-2 d-md-block">
-                    <a type="button" class="btn btn-success btn-lg" onclick="location.href = '/empezar'">Iniciar Rifa
-                        General</a>
-                    <a type="button" class="btn btn-info btn-lg" style="color: white;"
-                        onclick="location.href = '/especial'">Iniciar Rifa Especial</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="card mb-3">
-                                <div class="row g-0">
-                                    <div class="col-md-2">
-
-                                        <img src="img/ganador1.webp" class="img-fluid rounded-start" alt="...">
-                                    </div>
-                                    <div class="col-md-10">
-                                        <div class="card-body">
-                                            <h5 class="card-title" style="font-family:Poppins ">GANADOR</h5>
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th style="font-family:Poppins">No. Empleado</th>
-                                                            <th style="font-family:Poppins">Nombre</th>
-                                                            <th style="font-family:Poppins">Dirección</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="font-family:Poppins"></td>
-                                                            <td style="font-family:Poppins"></td>
-                                                            <td style="font-family:Poppins"></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-
+                                    <img src="img/ganador1.webp" class="img-fluid rounded-start"
+                                        alt="...">
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="font-family:Poppins ">GANADOR</h5>
+                                        <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th style="font-family:Poppins">No. Empleado</th>
+                                                    <th style="font-family:Poppins">Nombre</th>
+                                                    <th style="font-family:Poppins">Dirección</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="font-family:Poppins"></td>
+                                                    <td style="font-family:Poppins"></td>
+                                                    <td style="font-family:Poppins"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                         </div>
+                                        
+                
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="card mb-3">
-                                <div class="row g-0">
-                                    <div class="col-md-2">
-                                        <img src="img/reglo.webp" class="img-fluid rounded-start" alt="...">
-                                    </div>
-                                    <div class="col-md-10">
-                                        <div class="card-body">
-                                            <h5 class="card-title" style="font-family:Poppins">REGALO</h5>
-                                            <div>
-                                                <table class="table">
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-2">
+                                    <img src="img/reglo.webp" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="font-family:Poppins">REGALO</h5>
+                                        <div>
+                                            <table class="table" >
+                                                <tr>
+                                                    <th style="font-family:Poppins">Descripción</th>
+                                                </tr>
+                                                <tbody>
                                                     <tr>
-                                                        <th style="font-family:Poppins">Descripción</th>
+                                                        <td style="font-family:Poppins"></td>
                                                     </tr>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="font-family:Poppins"></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
+                                                </tbody>
+                                            </table>
                                         </div>
+                                        <!-- <p style="font-family:Poppins">Nancy</p> -->
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {{-- Lista de Ganadores --}}
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES
-                            </h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Número de empleado</th>
-                                            <th>Nombre</th>
-                                            <th>Regalo</th>
-                                            <th>Dirección</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                </div>
+                {{-- Lista de Ganadores --}}
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Número de empleado</th>
+                                        <th>Nombre</th>
+                                        <th>Regalo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-        {{-- </div> --}}
     </div>
 </body>
 
