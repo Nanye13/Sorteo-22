@@ -430,26 +430,25 @@
 
                 <?php if ($cantidad_regalos == 1) : ?>
                 <!-- <a href="/ganadoresEsp">FINALIZAR</a> -->
-                <input type='button' class="btn btn-danger" style="margin-bottom: 10px;" value='FINALIZAR'
+                <input type='button' class="btn btn-danger btn-lg" style="margin-bottom: 10px;" value='FINALIZAR'
                     onclick="location.href = '/ganadoresEsp'" />
 
 
                 <?php else : ?>
                 <!-- <a href="/sorteoEspecial">INICIAR</a> -->
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Launch demo modal
-                </button>
-                <input type='button' class="btn btn-success" style="margin-bottom: 10px;" value='Seguir'
-                    onclick="location.href = '/sorteoEspecial'" />
+
+                {{-- <input type='button' class="btn btn-success" style="margin-bottom: 10px;" value='Seguir'
+                    onclick="location.href = '/sorteoEspecial'" /> --}}
+                <input type='button' class="btn btn-success btn-lg" style="margin-bottom: 10px;" value='Seguir'
+                    onclick="abrir()" />
 
                 <?php endif ?>
 
                 <!-- <a href="/especial">Limpiar</a> -->
                 <input type='button' class="btn btn-warning" style="margin-bottom: 10px;" value='Limpiar'
                     onclick="location.href = '/especial'" />
-                <input type='button' class="btn btn-warning" style="margin-bottom: 10px;" value='abrir'
-                    onclick="abrir()" />
+
             </div>
         </div>
         <div class="card">
@@ -459,19 +458,21 @@
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header">
+                            <audio src="" id="sonido" autoplay></audio>
+
+                            {{-- <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
-                            </div>
+                            </div> --}}
                             <div class="modal-body"
                                 style="background-image: url(img/confetti2.gif);background-size: cover; background-position: 50%">
 
                                 <img src="img/tombola.gif" alt="">
                             </div>
-                            <div class="modal-footer">
+                            {{-- <div class="modal-footer">
 
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -581,12 +582,18 @@
 <script>
     function abrir() {
         //console.log("entro")
+        let audioEtiqueta = document.querySelector("audio");
+
         $('#gif').modal('show');
+        // audioEtiqueta.setAttribute("src", "img/sonido_especial.mp3");
+        audioEtiqueta.setAttribute("src", "img/sonido5.mp3");
+
+            audioEtiqueta.play();
         //abrir modal
         setTimeout(() => {
             $('#gif').modal('hide');
-            window.location.href = "{{ route('sorteoEspecial')}}";
-        }, 3000);
+            window.location.href = "{{ route('sorteoEspecial') }}";
+        }, 5000);
     }
 </script>
 

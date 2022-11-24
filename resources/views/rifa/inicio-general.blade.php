@@ -425,7 +425,7 @@
             <div class="d-grid gap-2 d-md-block">
                 <button id="detener" class="btn btn-danger btn-lg" hidden>Detener</button>
                 <button id="continuar" class="btn btn-success btn-lg"  >Empezar</button>
-                <a type="button" class="btn btn-info btn-lg" onclick="location.href = 'todos'">Rifar todos</a>
+                {{-- <a type="button" class="btn btn-info btn-lg" onclick="location.href = 'todos'">Rifar todos</a> --}}
 
                 <a type="button" class="btn btn-warning btn-lg" onclick="location.href = 'inicio'">Limpiar</a>
 
@@ -433,6 +433,7 @@
             </div>
         </div>
         <div class="card">
+            <audio src="" autoplay></audio>
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-6">
@@ -495,7 +496,6 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <!-- <p style="font-family:Poppins">Nancy</p> -->
                                     </div>
                                 </div>
                             </div>
@@ -556,47 +556,16 @@
         }
 
         function autoFocus() {
+            let audioEtiqueta = document.querySelector("audio");
+           
             if ($('#seguir').val() == 1) {
+                audioEtiqueta.setAttribute("src", "img/gane.mp3");
+                audioEtiqueta.play();
                 window.location.href = "{{ route('empleados')}}";
             }
         }
         setInterval('autoFocus()', 5000);
-        var udateTime = function() {
-        console.log("hola");
-        // Variables de la fecha y hora
-        let currentDate = new Date(),
-            hours = currentDate.getHours(),
-            minutes = currentDate.getMinutes(),
-            seconds = currentDate.getSeconds(),
-            weekDay = currentDate.getDay(),
-            day = currentDate.getDay(),
-            month = currentDate.getMonth(),
-            year = currentDate.getFullYear();
-
-        // Condiciones de cuando agregar un 0 en minutos
-        if (minutes < 10) {
-            minutes = "0" + minutes
-        }
-        // Condicion con los segundos
-        if (seconds < 10) {
-            seconds = "0" + seconds
-        }
-        // Formato de 12 horas 
-        var newformat = hours >= 12 ? 'PM' : 'AM';
-        // Dividimos las horas
-        hours = hours % 12;
-        // To display "0" as "12"
-        hours = hours ? hours : 12;
-        // Elemntos de la vista
-        document.getElementById('hours').textContent = hours;
-        document.getElementById('minutes').textContent = minutes;
-        document.getElementById('seconds').textContent = seconds;
-        document.getElementById('zona').textContent = newformat;
-    };
-
-    udateTime();
-
-    setInterval(udateTime, 1000);
+   
     </script>
 </body>
 

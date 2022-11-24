@@ -421,7 +421,7 @@
     <div class="container-fluid">
         <div style="margin-bottom: 15px; text-align: center">
             <div class="d-grid gap-2 d-md-block">
-                <a type="button" class="btn btn-success btn-lg" onclick="location.href = '/empleados'">Iniciar Rifa General</a>
+                <a type="button" class="btn btn-success btn-lg" onclick="location.href = '/empezar'">Iniciar Rifa General</a>
                 <a type="button" class="btn btn-info btn-lg" style="color: white;" onclick="location.href = '/especial'">Iniciar Rifa Especial</a>
             </div>
         </div>

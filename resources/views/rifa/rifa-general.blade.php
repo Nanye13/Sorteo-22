@@ -415,12 +415,12 @@
 </head>
 
 <body class="antialiased">
-<div style="background-image: url(img/fondo1.jpg);background-repeat: no-repeat;background-size: cover;">
+<div  style="background-image: url(img/fondo1.jpg);background-repeat: no-repeat;background-position: top;background-size: contain">
 
-    {{-- <header style="height: 200px">
+    <header style="height: 200px">
 
-    </header> --}}
-    <div class="container">
+    </header>
+    <div class="container-fluid">
         <div style="margin-bottom: 15px; text-align: center">
         <input type="text" id="seguir" value="1" hidden>
 
@@ -433,6 +433,7 @@
             </div>
         </div>
         <div class="card">
+            <audio src="img/gane.mp3" autoplay></audio>
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-6">
@@ -495,7 +496,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <!-- <p style="font-family:Poppins">Nancy</p> -->
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -564,7 +565,11 @@
         }
 
         function autoFocus() {
+            let audioEtiqueta = document.querySelector("audio");
+
             if ($('#seguir').val() == 1) {
+                // audioEtiqueta.setAttribute("src", "img/gane.mp3");
+                // audioEtiqueta.play();
                 //hacer play
             //abrir modal
         //     setTimeout(() => {
@@ -573,7 +578,7 @@
                 window.location.href = "{{ route('empleados')}}";
             }
         }
-        setInterval('autoFocus()', 1000);
+        setInterval('autoFocus()', 5000);
     //     var udateTime = function() {
     //     console.log("hola");
     //     // Variables de la fecha y hora

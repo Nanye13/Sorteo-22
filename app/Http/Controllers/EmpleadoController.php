@@ -6,6 +6,7 @@ use App\Models\Empleado;
 use App\Models\Ganador;
 use App\Models\Regalo;
 use Illuminate\Http\Request;
+use PDF;
 
 class EmpleadoController extends Controller
 {
@@ -61,17 +62,18 @@ class EmpleadoController extends Controller
                 "ronda" => 1,
                 "especial" => $regalo->especial == 'S' ? 'S' : 'N'
             ]);
-            $arregloGanadores = Ganador::get();
+            $arregloGanadores = Ganador::where('especial', 'N')->get();
             // $contador = $contador + 1;
             return view('rifa.rifa-general', compact('empleado', 'regalo', 'arregloGanadores', 'cant', 'numero_regalos', 'numero_regalo', 'cantidadRegalos'));
         } else {
-
-            EmpleadoController::ganadoresGeneral();
+            $ganadoresGeneral = Ganador::where('especial', 'N')->get();
+            return view('rifa.ganador-general', compact('ganadoresGeneral'));
+            // EmpleadoController::ganadoresGeneral();
         }
     }
     public function inicio()
     {
-        $arregloGanadores = Ganador::get();
+        $arregloGanadores = Ganador::where('especial', 'N')->get();
         return view('rifa.inicio-general', compact('arregloGanadores'));
     }
     public static function ganadoresGeneral()
@@ -136,8 +138,8 @@ class EmpleadoController extends Controller
                 "especial" => $regalo->especial == 'S' ? 'S' : 'N'
             ]);
 
-            $arregloGanadores = Ganador::get();
-            return view('rifa.rifa-especial', compact('cantidad_regalos', 'empleado', 'regalo', 'arregloGanadores','numero_jugador'));
+            $arregloGanadores = Ganador::where('especial', 'S')->get();
+            return view('rifa.rifa-especial', compact('cantidad_regalos', 'empleado', 'regalo', 'arregloGanadores', 'numero_jugador'));
         } else {
             // return "SE ACABO LA RIFA ESPECIAL";
             EmpleadoController::ganadoresEspecial();
@@ -223,9 +225,9 @@ class EmpleadoController extends Controller
                 "especial" => $regalo->especial == 'S' ? 'S' : 'N'
             ]);
 
-             $contador = $contador + 1;
+            $contador = $contador + 1;
             //return view('rifa.rifa-general', compact('empleado', 'regalo', 'arregloGanadores', 'cant', 'numero_regalos', 'numero_regalo', 'cantidadRegalos'));
-            
+
         }
         $arregloGanadores = Ganador::get();
         // $this->ganadoresGeneral();
@@ -233,6 +235,71 @@ class EmpleadoController extends Controller
         $ganadoresGeneral = Ganador::where('especial', 'N')->get();
         // return "SE ACABO LA RIFA";
         return view('rifa.ganador-general', compact('ganadoresGeneral'));
+    }
+    // PDF GENERALES 
+    public function createPDFGenerales()
+    {
+        //Recuperar todos los productos de la db
+        $ganadores = Ganador::all();
+        // return $ganadores;
+        // $ganadores = Ganador::orderBy('direccion')->get();
+
+        // view()->share('ganadores', $ganadores);
+        $direcciones = Ganador::select('direccion')->distinct()->get();
+        $nombresDir = [];
+        // foreach ($direcciones as $key => $dir) {
+        //     # code...
+        //     $direccion = [
+        //         "nombre" => $dir->direccion,
+        //         "ganadores" => []
+        //     ];
+        //     array_push($nombresDir,$direccion);
+        // }
+
+        // foreach ($ganadores as $ganador) {
+        //     $direc = $ganador->direccicon;
+        //     array_push($nombresDir['nombre'[$direc]],$ganador->nombre_empleado);
+        // }
+        $array = ['POLICÍA DE INVESTIGACIÓN DEL DELITO'=>[]];
+        
+
+       foreach ($direcciones as $key => $dir) {
+            # code...
+            $direccion = [
+                $dir->direccion => Ganador::where('direccion', $dir->direccion)->get()
+                
+             ];
+            array_push($nombresDir, $direccion);
+        }
+
+        // foreach ($ganadores as $key => $ganador) {
+        //     $direc = $ganador->direccion;
+        //     if(strcmp($nombresDir[$key]['nombre'],$direc)!== 0){
+        //         return $ganador;
+        //         // array_push($nombresDir[$key]['ganador'], $ganador);
+        //     }
+           
+           
+        // }
+
+
+        
+        // foreach ($nombresDir as $key => $di) {
+        //     # code...
+        //     var_dump($di);
+        //     array_push($di[$key],Ganador::where('direccion', $di['nombre'])->get());
+
+        // }
+
+        // return $nombresDir;
+        //return $nombresDir;
+
+        $pdf = PDF::loadView('pdf/todosganadores', ['ganadores' => $ganadores,'direcciones'=> $nombresDir])->setPaper('carta', 'landscape');
+        return $pdf->stream();
+        // return $pdf->download('archivo-pdf.pdf');
+
+        //idea leo
+
     }
     /**
      * Show the form for creating a new resource.
