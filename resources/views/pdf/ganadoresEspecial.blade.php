@@ -46,7 +46,7 @@
      
              <h2>&nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; 
                 FISCALÍA GENERAL DEL ESTADO DE QUERÉTARO</h2>
-             <h3> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;LISTA DE GANADORES DE LA RIFA 2022</h3>
+             <h3> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;LISTA DE GANADORES DE REGALOS ESPECIALES 2022</h3>
     
       
     </th>
@@ -58,35 +58,6 @@
         </tr>
     </table>
 
-
-    <table class="tabla" id="tabla">
-        <tr id="tr1">
-            <th id="th1">Número de emplead@</th>
-            <th id="th1">Nombre del(la) Ganador(a)</th>
-            <th id="th1" >Regalo</th>
-            <th id="th1">Fecha recibe</th>
-            <th id="th1">Firma</th>
-        </tr>
-        @foreach ($direcciones as $direccion)
-            <tr>
-                <th colspan="5" style="background: #DADADA;border: 1px solid black">{{ $direccion[0]->direccion }}
-                </th>
-            </tr>
-            @foreach ($direccion as $ganador)
-                <tr>
-                    <td>{{ $ganador->numero_empleado }}</td>
-                    <td>{{ $ganador->nombre_empleado }}</td>
-                    <td>{{ $ganador->nombre_regalo }}</td> 
-                    <td > &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp;</td>
-                    <td> &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;  </td>
-                </tr>
-            @endforeach
-        @endforeach
-
-    </table>
-    <hr>
-    <h3 style="text-align: center">LISTA DE GANADORES DE REGALOS ESPECIALES</h3>
-    <hr>
     <table class="tabla" id="tabla">
         <tr id="tr1">
             <th id="th1">Número de emplead@</th>

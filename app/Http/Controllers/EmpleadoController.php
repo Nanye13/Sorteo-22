@@ -52,19 +52,21 @@ class EmpleadoController extends Controller
             $regalo = Regalo::find($numero_regalos);
             $regalo->ganador = "S";
             $regalo->save();
-
+            date_default_timezone_set('America/Mexico_City');
             $ganador = Ganador::create([
                 "numero_empleado" => $empleado->numero_empleado,
                 "nombre_empleado" => $empleado->nombre_empleado,
                 "nombre_regalo" => $regalo->nombre_regalo,
                 "direccion" => $empleado->direccion,
                 "puesto" => $empleado->puesto,
+                "fecha_hora" => date('y-m-d H:i:s'),
                 "ronda" => 1,
                 "especial" => $regalo->especial == 'S' ? 'S' : 'N'
             ]);
-            $arregloGanadores = Ganador::where('especial', 'N')->get();
+            $arregloGanadores = Ganador::where('especial', 'N')->orderBy('fecha_hora', 'DESC')->get();
+            $cantGanadores = count($arregloGanadores);
             // $contador = $contador + 1;
-            return view('rifa.rifa-general', compact('empleado', 'regalo', 'arregloGanadores', 'cant', 'numero_regalos', 'numero_regalo', 'cantidadRegalos'));
+            return view('rifa.rifa-general', compact('empleado', 'regalo', 'arregloGanadores', 'cant', 'numero_regalos', 'numero_regalo', 'cantidadRegalos','cantGanadores'));
         } else {
             $ganadoresGeneral = Ganador::where('especial', 'N')->get();
             return view('rifa.ganador-general', compact('ganadoresGeneral'));
@@ -240,66 +242,37 @@ class EmpleadoController extends Controller
     public function createPDFGenerales()
     {
         //Recuperar todos los productos de la db
-        $ganadores = Ganador::all();
-        // return $ganadores;
-        // $ganadores = Ganador::orderBy('direccion')->get();
 
-        // view()->share('ganadores', $ganadores);
-        $direcciones = Ganador::select('direccion')->distinct()->get();
-        $nombresDir = [];
-        // foreach ($direcciones as $key => $dir) {
-        //     # code...
-        //     $direccion = [
-        //         "nombre" => $dir->direccion,
-        //         "ganadores" => []
-        //     ];
-        //     array_push($nombresDir,$direccion);
-        // }
+        $direcciones = Ganador::orderBy('direccion')->select('direccion')->where('especial', 'N')->distinct()->get();
+        $direccionesEspeciales = Ganador::orderBy('direccion')->select('direccion')->where('especial', 'S')->distinct()->get();
 
-        // foreach ($ganadores as $ganador) {
-        //     $direc = $ganador->direccicon;
-        //     array_push($nombresDir['nombre'[$direc]],$ganador->nombre_empleado);
-        // }
-        $array = ['POLICÍA DE INVESTIGACIÓN DEL DELITO'=>[]];
-        
-
-       foreach ($direcciones as $key => $dir) {
-            # code...
-            $direccion = [
-                $dir->direccion => Ganador::where('direccion', $dir->direccion)->get()
-                
-             ];
-            array_push($nombresDir, $direccion);
+        $ganadoresD = [];
+        foreach ($direcciones as $direccion) {
+            $dir = Ganador::orderBy('nombre_empleado')->where('direccion', $direccion->direccion)->where('especial','N')->get();
+            array_push($ganadoresD, $dir);
         }
 
-        // foreach ($ganadores as $key => $ganador) {
-        //     $direc = $ganador->direccion;
-        //     if(strcmp($nombresDir[$key]['nombre'],$direc)!== 0){
-        //         return $ganador;
-        //         // array_push($nombresDir[$key]['ganador'], $ganador);
-        //     }
-           
-           
-        // }
+        $ganadoresEspeciales = [];
+        foreach ($direccionesEspeciales as $direc) {
+            $dire = Ganador::orderBy('nombre_empleado')->where('direccion', $direc->direccion)->where('especial','S')->get();
+            array_push($ganadoresEspeciales, $dire);
+        }
 
-
-        
-        // foreach ($nombresDir as $key => $di) {
-        //     # code...
-        //     var_dump($di);
-        //     array_push($di[$key],Ganador::where('direccion', $di['nombre'])->get());
-
-        // }
-
-        // return $nombresDir;
-        //return $nombresDir;
-
-        $pdf = PDF::loadView('pdf/todosganadores', ['ganadores' => $ganadores,'direcciones'=> $nombresDir])->setPaper('carta', 'landscape');
+        $pdf = PDF::loadView('pdf/todosganadores', ['direcciones' => $ganadoresD,'especiales'=>$ganadoresEspeciales])->setPaper('carta', 'landscape');
         return $pdf->stream();
-        // return $pdf->download('archivo-pdf.pdf');
+        
 
-        //idea leo
-
+    }
+    public function pdfEspecial(){
+        $direccionesEspeciales = Ganador::orderBy('direccion')->select('direccion')->where('especial', 'S')->distinct()->get();
+        $ganadoresEspeciales = [];
+        foreach ($direccionesEspeciales as $direc) {
+            $dire = Ganador::orderBy('nombre_empleado')->where('direccion', $direc->direccion)->where('especial','S')->get();
+            array_push($ganadoresEspeciales, $dire);
+        }
+        $pdf = PDF::loadView('pdf/ganadoresEspecial', ['especiales'=>$ganadoresEspeciales])->setPaper('carta', 'landscape');
+        return $pdf->stream();
+        
     }
     /**
      * Show the form for creating a new resource.

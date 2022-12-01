@@ -564,7 +564,7 @@
                 window.location.href = "{{ route('empleados')}}";
             }
         }
-        setInterval('autoFocus()', 5000);
+        setInterval('autoFocus()', 1000);
    
     </script>
 </body>

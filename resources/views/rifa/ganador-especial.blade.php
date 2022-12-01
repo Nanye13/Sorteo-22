@@ -423,6 +423,7 @@
             <div class="d-grid gap-2 d-md-block">
                 <a type="button" class="btn btn-success btn-lg" onclick="location.href = '/empezar'">Iniciar Rifa General</a>
                 <a type="button" class="btn btn-info btn-lg" style="color: white;" onclick="location.href = '/especial'">Iniciar Rifa Especial</a>
+                <a href="pdfEspecial" type="button" class="btn btn-outline-warning btn-lg ">Imprimir</a>  
             </div>
         </div>
         <div class="card">
@@ -440,6 +441,7 @@
                                     <tr>
                                         <th>Número de empleado</th>
                                         <th>Nombre</th>
+                                        <th>Dirección</th>
                                         <th>Regalo</th>
                                     </tr>
                                 </thead>
@@ -448,6 +450,7 @@
                                     <tr>
                                         <td> {{$ganador['numero_empleado']}}</td>
                                         <td>{{$ganador['nombre_empleado']}}</td>
+                                        <td>{{$ganador['direccion']}}</td>
                                         <td> {{$ganador['nombre_regalo']}}</td>
                                     </tr>
                                     @endforeach

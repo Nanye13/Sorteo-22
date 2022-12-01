@@ -27,7 +27,7 @@
 
         body {
             margin: 0;
-            background-image: url(img/fondo1.jpg);
+            /* background-image: url(img/f1.png); */
             /* background-position: center center; */
             background-repeat: no-repeat;
             /* background-attachment: fixed; */
@@ -424,55 +424,72 @@
 </head>
 
 <body class="antialiased">
-    
-    <header style="height: 200px" >
-        {{-- <div style="background-image: url(img/fondo1.jpg);background-size: cover;">
+    <div
+        style="background-image: url(img/f1.png);background-repeat: no-repeat;background-position: top;background-size: contain">
+
+        <header style="height: 200px">
+            {{-- <div style="background-image: url(img/fondo1.jpg);background-size: cover;">
 
         </div> --}}
-    </header>
-    <div class="container-fluid">
-        <div style="margin-bottom: 15px; text-align: center">
-            <div class="d-grid gap-2 d-md-block">
-                <a type="button" class="btn btn-success btn-lg" onclick="location.href = 'empleados'">Iniciar Rifa General</a>
-                <a type="button" class="btn btn-info btn-lg" style="color: white;" onclick="location.href = 'especial'">Iniciar Rifa Especial</a>
-              </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <a href="pfdGeneral">Imprimir</a>
-                {{-- Lista de Ganadores --}}
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Número de empleado</th>
-                                        <th>Nombre</th>
-                                        <th>Regalo</th>
-                                        <th>Dirección</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                @foreach ($ganadoresGeneral as $ganador)
-                                    <tr>
-                                        <td>{{$ganador['numero_empleado']}}</td>
-                                        <td>{{$ganador['nombre_empleado']}}</td>
-                                        <td>{{$ganador['nombre_regalo']}}</td>
-                                        <td>{{$ganador['direccion']}}</td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+        </header>
+        <div class="container-fluid">
+            <div style="margin-bottom: 15px; text-align: center">
+                <div class="d-grid gap-2 d-md-block">
+                    <a type="button" class="btn btn-success btn-lg" onclick="location.href = 'empezar'">Iniciar Rifa
+                        General</a>
+                    <a type="button" class="btn btn-info btn-lg" style="color: white;"
+                        onclick="location.href = 'especial'">Iniciar Rifa Especial</a>
+                    <a href="pdfGeneral" type="button" class="btn btn-outline-warning btn-lg ">Imprimir</a>
+                </div>
+            </div>
+            <div class="card">
+                {{-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a href="pfdGeneral" type="button" class="btn btn-outline-warning ">Imprimir</a>
+              </div> --}}
+                <div class="card-body">
+                    {{-- Lista de Ganadores --}}
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Número de empleado</th>
+                                            <th>Nombre</th>
+                                            <th>Regalo</th>
+                                            <th>Dirección</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @php
+                                            $cont = 1;
+                                        @endphp
+                                        @foreach ($ganadoresGeneral as $ganador)
+                                            <tr>
+                                                <td>{{ $cont }}</td>
+                                                <td>{{ $ganador['numero_empleado'] }}</td>
+                                                <td>{{ $ganador['nombre_empleado'] }}</td>
+                                                <td>{{ $ganador['nombre_regalo'] }}</td>
+                                                <td>{{ $ganador['direccion'] }}</td>
+                                            </tr>
+                                            @php
+                                                $cont++;
+                                            @endphp
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
 </body>
 

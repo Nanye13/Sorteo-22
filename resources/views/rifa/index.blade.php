@@ -418,16 +418,16 @@
     </style>
 </head>
 
-<body class="antialiased">
+<body class="antialiased" style="height: 200px; background-image: url(img/Banner2.jpg);background-repeat: no-repeat; background-size: cover;">
 
-    <header style="height: 200px; background-image: url(img/fondo1.jpg);background-repeat: no-repeat; background-size: cover;">
+    <header >
 
     </header>
 
 
     {{-- <div class="conatiner-fluid"> --}}
 
-        <div class="container-fluid">
+        <div class="container-fluid" style="background-color: transparent">
             <div style="margin-bottom: 15px; text-align: center">
                 <div class="d-grid gap-2 d-md-block">
                     <a type="button" class="btn btn-success btn-lg" onclick="location.href = '/empezar'">Iniciar Rifa
@@ -437,7 +437,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card" style="background-color: transparent">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6">
@@ -476,7 +476,7 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="card mb-3">
+                            <div class="card mb-3 opacity-50">
                                 <div class="row g-0">
                                     <div class="col-md-2">
                                         <img src="img/reglo.webp" class="img-fluid rounded-start" alt="...">
@@ -504,14 +504,14 @@
                         </div>
                     </div>
                     {{-- Lista de Ganadores --}}
-                    <div class="card">
-                        <div class="card-header">
+                    <div class="card-transparent" >
+                        <div class="card-header" style="background-color: gray">
                             <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES
                             </h5>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body " >
                             <div class="table-responsive">
-                                <table class="table table-striped">
+                                <table class="table table-striped" >
                                     <thead>
                                         <tr>
                                             <th>Número de empleado</th>

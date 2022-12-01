@@ -9,10 +9,14 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
     </script>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap"
+        rel="stylesheet">
     <!-- Styles -->
     <style>
         /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -411,212 +415,256 @@
             /* font-family: 'Nunito', sans-serif; */
             font-family: Poppins;
         }
+
+        .my-custom-scrollbar {
+            position: relative;
+            height: 200px;
+            overflow: auto;
+        }
+
+        .table-wrapper-scroll-y {
+            display: block;
+        }
+
+        .table-fixed thead,
+        .table-fixed tfoot {
+            width: 97%;
+        }
+
+        .table-fixed tbody {
+            height: 230px;
+            overflow-y: auto;
+            width: 100%;
+        }
+
+        .table-fixed thead,
+        .table-fixed tbody,
+        .table-fixed tfoot,
+        .table-fixed tr,
+        .table-fixed td,
+        .table-fixed th {
+            display: block;
+        }
+
+        .table-fixed tbody td,
+        .table-fixed thead>tr>th,
+        .table-fixed tfoot>tr>td {
+            float: left;
+            border-bottom-width: 0;
+        }
     </style>
 </head>
 
 <body class="antialiased">
-<div  style="background-image: url(img/fondo1.jpg);background-repeat: no-repeat;background-position: top;background-size: contain">
+    <div style="background-image: url(img/Banner.jpg);background-repeat: repeat;background-position: top;">
 
-    <header style="height: 200px">
+        <header style="height: 50px">
 
-    </header>
-    <div class="container-fluid">
-        <div style="margin-bottom: 15px; text-align: center">
-        <input type="text" id="seguir" value="1" hidden>
+        </header>
+        <div class="container-fluid" style="background-color: transparent">
+            <div style="margin-bottom: 15px; text-align: center">
+                <input type="text" id="seguir" value="1" hidden>
 
-            <div class="d-grid gap-2 d-md-block">
-                <button id="detener" class="btn btn-danger btn-lg" >Detener</button>
-                <button id="continuar" class="btn btn-success btn-lg" hidden >Seguir</button>
+                <div class="d-grid gap-2 d-md-block">
+                    <button id="detener" class="btn btn-danger btn-lg">Detener</button>
+                    <button id="continuar" class="btn btn-success btn-lg" hidden>Seguir</button>
 
-                <a type="button" class="btn btn-warning btn-lg" onclick="location.href = '/inicio'">Limpiar</a>
-                <!-- <a type="button" class="btn btn-info btn-lg" style="color: white;" onclick="location.href = '/especial'">Iniciar Rifa Especial</a> -->
+                    <a type="button" class="btn btn-warning btn-lg" onclick="location.href = '/inicio'">Limpiar</a>
+                    <!-- <a type="button" class="btn btn-info btn-lg" style="color: white;" onclick="location.href = '/especial'">Iniciar Rifa Especial</a> -->
+                </div>
             </div>
-        </div>
-        <div class="card">
-            <audio src="img/gane.mp3" autoplay></audio>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-2">
+            <div class="card" style="background-color: transparent">
+                <audio src="img/gane.mp3" autoplay></audio>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="card mb-3"
+                                style="background-color: transparent; color: white; border-color: white">
+                                <div class="row g-0">
+                                    <div class="col-md-2">
 
-                                    <img src="img/ganador1.webp" class="img-fluid rounded-start" alt="...">
-                                </div>
-                                <div class="col-md-10">
-                                    <div class="card-body">
-                                        <h5 class="card-title" style="font-family:Poppins ">GANADOR</h5>
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th style="font-family:Poppins">No. Empleado</th>
-                                                        <th style="font-family:Poppins">Nombre</th>
-                                                        <th style="font-family:Poppins">Dirección</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php if(isset($empleado)): ?>
-                                                    <tr>
-                                                        <td style="font-family:Poppins">{{$empleado->numero_empleado}}</td>
-                                                        <td style="font-family:Poppins">{{$empleado->nombre_empleado}}</td>
-                                                        <td style="font-family:Poppins">{{$empleado->direccion}}</td>
-                                                    </tr>
-                                                    <?php endif ?>
-                                                </tbody>
-                                            </table>
+                                        <img src="img/ganador1.webp" class="img-fluid rounded-start" alt="...">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="font-family:Poppins ">GANADOR</h5>
+                                            <div class="table-responsive">
+                                                <table class="table" style="color: white;font-weight: bold;">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="font-family:Poppins">No. Empleado</th>
+                                                            <th style="font-family:Poppins">Nombre</th>
+                                                            <th style="font-family:Poppins">Dirección</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody <?php if(isset($empleado)): ?> <tr>
+                                                        <td style="font-family:Poppins">{{ $empleado->numero_empleado }}
+                                                        </td>
+                                                        <td style="font-family:Poppins">{{ $empleado->nombre_empleado }}
+                                                        </td>
+                                                        <td style="font-family:Poppins">{{ $empleado->direccion }}</td>
+                                                        </tr>
+                                                        <?php endif ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="col-sm-2">
+                        </div>
 
+                        <div class="col-sm-5">
+                            <div class="card mb-3"
+                                style="background-color: transparent; color: white;border-color: white">
+                                <div class="row g-0">
+                                    <div class="col-md-2">
+                                        <img src="img/reglo.webp" class="img-fluid rounded-start" alt="...">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="font-family:Poppins">REGALO</h5>
+                                            <div class="table-responsive">
+                                                <table class="table " style="color: white; font-weight: bold">
+                                                    <tr>
+                                                        <th style="font-family:Poppins">Descripción</th>
+                                                    </tr>
+                                                    <tbody>
+                                                        <?php if(isset($regalo)): ?>
+                                                        <tr>
+                                                            <td style="font-family:Poppins">{{ $regalo->nombre_regalo }}
+                                                            </td>
+                                                        </tr>
+                                                        <?php endif ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="card mb-3">
-                            <div class="row g-0">
-                                <div class="col-md-2">
-                                    <img src="img/reglo.webp" class="img-fluid rounded-start" alt="...">
-                                </div>
-                                <div class="col-md-10">
-                                    <div class="card-body">
-                                        <h5 class="card-title" style="font-family:Poppins">REGALO</h5>
-                                        <div>
-                                            <table class="table">
-                                                <tr>
-                                                    <th style="font-family:Poppins">Descripción</th>
-                                                </tr>
-                                                <tbody>
-                                                <?php if(isset($regalo)): ?>
-                                                    <tr>
-                                                        <td style="font-family:Poppins">{{$regalo->nombre_regalo}}</td>
-                                                    </tr>
-                                                    <?php endif ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                       
-                                    </div>
-                                </div>
+                    {{-- Lista de Ganadores --}}
+                    <div class="card-transparent">
+                        <div class="card-header" style="background-color: #212529">
+                            <h5 class="card-title" style="font-family:Poppins; text-align: center; color: white;">LISTA
+                                DE GANADORES</h5>
+                        </div>
+                        <div class="card-body">
+                            <div >
+                                <table class=" table table-dark table-wrapper-scroll-y my-custom-scrollbar">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Número de empleado</th>
+                                            <th>Nombre</th>
+                                            <th>Regalo</th>
+                                            <th>Dirección</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody >
+                                        @php
+                                            $cont = 1;
+                                        @endphp
+                                        @foreach ($arregloGanadores as $ganador)
+                                            <tr>
+                                                <td>{{ $cantGanadores }}</td>
+                                                <td>{{ $ganador['numero_empleado'] }}</td>
+                                                <td>{{ $ganador['nombre_empleado'] }}</td>
+                                                <td> {{ $ganador['nombre_regalo'] }}</td>
+                                                <td>{{ $ganador['direccion'] }}</td>
+                                            </tr>
+                                            @php
+                                                $cantGanadores--;
+                                            @endphp
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
-                {{-- Lista de Ganadores --}}
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Número de empleado</th>
-                                        <th>Nombre</th>
-                                        <th>Regalo</th>
-                                        <th>Dirección</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @php
-                                        $cont = 1;
-                                    @endphp
-                                    @foreach ($arregloGanadores as $ganador)
-
-                                    <tr>
-                                        <td>{{$cont}}</td>
-                                        <td>{{$ganador['numero_empleado']}}</td>
-                                        <td>{{$ganador['nombre_empleado']}}</td>
-                                        <td> {{$ganador['nombre_regalo']}}</td>
-                                        <td>{{$ganador['direccion']}}</td>
-                                    </tr>
-                                    @php
-                                        $cont++;
-                                    @endphp
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
             </div>
+
         </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-    </div>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>
+            document.getElementById("detener").addEventListener("click", detener);
+            document.getElementById("continuar").addEventListener("click", seguir);
 
-    <script>
-        document.getElementById("detener").addEventListener("click", detener);
-        document.getElementById("continuar").addEventListener("click", seguir);
-
-        function detener() {
-            $("#continuar").removeAttr('hidden');
-            $('#seguir').val('0');
-            $("#detener").prop("hidden", true);
-        }
-
-        function seguir() {
-            $("#detener").removeAttr('hidden');
-            $('#seguir').val('1');
-            $("#continuar").prop("hidden", true);
-        }
-
-        function autoFocus() {
-            let audioEtiqueta = document.querySelector("audio");
-
-            if ($('#seguir').val() == 1) {
-                // audioEtiqueta.setAttribute("src", "img/gane.mp3");
-                // audioEtiqueta.play();
-                //hacer play
-            //abrir modal
-        //     setTimeout(() => {
-        // //pause
-        //     }, 3000);
-                window.location.href = "{{ route('empleados')}}";
+            function detener() {
+                $("#continuar").removeAttr('hidden');
+                $('#seguir').val('0');
+                $("#detener").prop("hidden", true);
             }
-        }
-        setInterval('autoFocus()', 5000);
-    //     var udateTime = function() {
-    //     console.log("hola");
-    //     // Variables de la fecha y hora
-    //     let currentDate = new Date(),
-    //         hours = currentDate.getHours(),
-    //         minutes = currentDate.getMinutes(),
-    //         seconds = currentDate.getSeconds(),
-    //         weekDay = currentDate.getDay(),
-    //         day = currentDate.getDay(),
-    //         month = currentDate.getMonth(),
-    //         year = currentDate.getFullYear();
 
-    //     // Condiciones de cuando agregar un 0 en minutos
-    //     if (minutes < 10) {
-    //         minutes = "0" + minutes
-    //     }
-    //     // Condicion con los segundos
-    //     if (seconds < 10) {
-    //         seconds = "0" + seconds
-    //     }
-    //     // Formato de 12 horas 
-    //     var newformat = hours >= 12 ? 'PM' : 'AM';
-    //     // Dividimos las horas
-    //     hours = hours % 12;
-    //     // To display "0" as "12"
-    //     hours = hours ? hours : 12;
-    //     // Elemntos de la vista
-    //     document.getElementById('hours').textContent = hours;
-    //     document.getElementById('minutes').textContent = minutes;
-    //     document.getElementById('seconds').textContent = seconds;
-    //     document.getElementById('zona').textContent = newformat;
-    // };
+            function seguir() {
+                $("#detener").removeAttr('hidden');
+                $('#seguir').val('1');
+                $("#continuar").prop("hidden", true);
+            }
 
-    // udateTime();
+            function autoFocus() {
+                let audioEtiqueta = document.querySelector("audio");
 
-    // setInterval(udateTime, 1000);
-    </script>
-</div>
+                if ($('#seguir').val() == 1) {
+                    // audioEtiqueta.setAttribute("src", "img/gane.mp3");
+                    // audioEtiqueta.play();
+                    //hacer play
+                    //abrir modal
+                    //     setTimeout(() => {
+                    // //pause
+                    //     }, 3000);
+                    window.location.href = "{{ route('empleados') }}";
+                }
+            }
+            setInterval('autoFocus()', 1000);
+            //     var udateTime = function() {
+            //     console.log("hola");
+            //     // Variables de la fecha y hora
+            //     let currentDate = new Date(),
+            //         hours = currentDate.getHours(),
+            //         minutes = currentDate.getMinutes(),
+            //         seconds = currentDate.getSeconds(),
+            //         weekDay = currentDate.getDay(),
+            //         day = currentDate.getDay(),
+            //         month = currentDate.getMonth(),
+            //         year = currentDate.getFullYear();
+
+            //     // Condiciones de cuando agregar un 0 en minutos
+            //     if (minutes < 10) {
+            //         minutes = "0" + minutes
+            //     }
+            //     // Condicion con los segundos
+            //     if (seconds < 10) {
+            //         seconds = "0" + seconds
+            //     }
+            //     // Formato de 12 horas 
+            //     var newformat = hours >= 12 ? 'PM' : 'AM';
+            //     // Dividimos las horas
+            //     hours = hours % 12;
+            //     // To display "0" as "12"
+            //     hours = hours ? hours : 12;
+            //     // Elemntos de la vista
+            //     document.getElementById('hours').textContent = hours;
+            //     document.getElementById('minutes').textContent = minutes;
+            //     document.getElementById('seconds').textContent = seconds;
+            //     document.getElementById('zona').textContent = newformat;
+            // };
+
+            // udateTime();
+
+            // setInterval(udateTime, 1000);
+        </script>
+    </div>
 </body>
 
 

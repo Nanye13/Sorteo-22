@@ -33,6 +33,8 @@ Route::get('sorteoEspecial', [EmpleadoController::class, 'especiales'])->name('s
 Route::get('ganadoresGe', [EmpleadoController::class, 'ganadoresGeneral'])->name('ganadoresGe');
 Route::get('ganadoresEsp', [EmpleadoController::class, 'ganadoresEspecial'])->name('ganadoresEsp');
 
-Route::get('pfdGeneral',[EmpleadoController::class,'createPDFGenerales'])->name('pfdGeneral');
+Route::get('pdfGeneral',[EmpleadoController::class,'createPDFGenerales'])->name('pdfGeneral');
+Route::get('pdfEspecial',[EmpleadoController::class,'pdfEspecial'])->name('pdfEspecial');
+
 
 
