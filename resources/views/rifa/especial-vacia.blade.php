@@ -279,9 +279,9 @@
         .antialiased {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            background-image: url(img/fondo.jpg);
-            background-repeat: no-repeat;
-            background-size: cover;
+            background-image: url(img/Banner.jpg);
+            background-repeat: repeat;
+            background-position: top;
         }
 
         .w-5 {
@@ -419,7 +419,7 @@
 </head>
 
 <body class="antialiased">
-    <header style="height: 200px">
+    <header style="height: 80px">
 
     </header>
     <div class="container-fluid">
@@ -433,7 +433,7 @@
 
             </div>
         </div>
-        <div class="card">
+        <div class="card-transparent">
             <audio src="" id="sonido" autoplay></audio>
             <div class="card-body">
                 <!-- Modal -->
@@ -460,17 +460,17 @@
                 {{-- Fin modal --}}
                 <div class="row">
                     <div class="col-sm-6">
-                        <div class="card mb-3">
+                        <div class="card mb-3"  style="background-color: transparent; color: white; border-color: white" >
                             <div class="row g-0">
                                 <div class="col-md-2">
 
                                     <img src="img/ganador1.webp" class="img-fluid rounded-start" alt="...">
                                 </div>
                                 <div class="col-md-10">
-                                    <div class="card-body">
+                                    <div class="card-body" style="color: white">
                                         <h5 class="card-title" style="font-family:Poppins ">GANADOR</h5>
                                         <div class="table-responsive">
-                                            <table class="table">
+                                            <table class="table" style="color: white">
                                                 <thead>
                                                     <tr>
                                                         <th style="font-family:Poppins">No. Empleado</th>
@@ -495,7 +495,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6">
-                        <div class="card mb-3">
+                        <div class="card mb-3"  style="background-color: transparent; color: white; border-color: white">
                             <div class="row g-0">
                                 <div class="col-md-2">
                                     <img src="img/reglo.webp" class="img-fluid rounded-start" alt="...">

@@ -425,38 +425,11 @@
         .table-wrapper-scroll-y {
             display: block;
         }
-
-        .table-fixed thead,
-        .table-fixed tfoot {
-            width: 97%;
-        }
-
-        .table-fixed tbody {
-            height: 230px;
-            overflow-y: auto;
-            width: 100%;
-        }
-
-        .table-fixed thead,
-        .table-fixed tbody,
-        .table-fixed tfoot,
-        .table-fixed tr,
-        .table-fixed td,
-        .table-fixed th {
-            display: block;
-        }
-
-        .table-fixed tbody td,
-        .table-fixed thead>tr>th,
-        .table-fixed tfoot>tr>td {
-            float: left;
-            border-bottom-width: 0;
-        }
     </style>
 </head>
 
-<body class="antialiased">
-    <div style="background-image: url(img/Banner.jpg);background-repeat: repeat;background-position: top;">
+<body class="antialiased" style="background-image: url(img/Banner.jpg);background-repeat: repeat;background-position: top;">
+    {{-- <div > --}}
 
         <header style="height: 50px">
 
@@ -558,8 +531,8 @@
                                 DE GANADORES</h5>
                         </div>
                         <div class="card-body">
-                            <div >
-                                <table class=" table table-dark table-wrapper-scroll-y my-custom-scrollbar">
+                            <div>
+                                <table class=" table table-dark table-wrapper-scroll-y  my-custom-scrollbar">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -569,7 +542,7 @@
                                             <th>Dirección</th>
                                         </tr>
                                     </thead>
-                                    <tbody >
+                                    <tbody>
                                         @php
                                             $cont = 1;
                                         @endphp
@@ -664,7 +637,7 @@
 
             // setInterval(udateTime, 1000);
         </script>
-    </div>
+    {{-- </div> --}}
 </body>
 
 

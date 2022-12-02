@@ -423,74 +423,71 @@
     </style>
 </head>
 
-<body class="antialiased">
-    <div
-        style="background-image: url(img/f1.png);background-repeat: no-repeat;background-position: top;background-size: contain">
+<body class="antialiased" style="background-image: url(img/Banner.jpg);background-repeat: repeat;background-position: top;">
 
-        <header style="height: 200px">
-            {{-- <div style="background-image: url(img/fondo1.jpg);background-size: cover;">
 
-        </div> --}}
-        </header>
-        <div class="container-fluid">
-            <div style="margin-bottom: 15px; text-align: center">
-                <div class="d-grid gap-2 d-md-block">
-                    <a type="button" class="btn btn-success btn-lg" onclick="location.href = 'empezar'">Iniciar Rifa
-                        General</a>
-                    <a type="button" class="btn btn-info btn-lg" style="color: white;"
-                        onclick="location.href = 'especial'">Iniciar Rifa Especial</a>
-                    <a href="pdfGeneral" type="button" class="btn btn-outline-warning btn-lg ">Imprimir</a>
-                </div>
+    <header style="height: 100px">
+       <h1 style="color:#efb810; text-align: center; padding-top: 10px">¡Felicidades a todas y todos los ganadores!</h1>
+    </header>
+    <div class="container-fluid">
+        <div style="margin-bottom: 15px; text-align: center">
+            <div class="d-grid gap-2 d-md-block">
+                <a type="button" class="btn btn-success btn-lg" onclick="location.href = 'empezar'">Iniciar Rifa
+                    General</a>
+                <a type="button" class="btn btn-info btn-lg" style="color: white;"
+                    onclick="location.href = 'especial'">Iniciar Rifa Especial</a>
+                <a href="pdfGeneral" type="button" class="btn btn-outline-warning btn-lg ">Imprimir</a>
             </div>
-            <div class="card">
-                {{-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        </div>
+        <div class="card-transparent">
+            {{-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <a href="pfdGeneral" type="button" class="btn btn-outline-warning ">Imprimir</a>
               </div> --}}
-                <div class="card-body">
-                    {{-- Lista de Ganadores --}}
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES
-                            </h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead>
+            <div class="card-body">
+                {{-- Lista de Ganadores --}}
+                <div class="card-transparent" style="color: white">
+                    <div class="card-header" style="background-color: #212529">
+                        <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive" >
+                            <table class="table table-striped table-dark">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Número de empleado</th>
+                                        <th>Nombre</th>
+                                        <th>Regalo</th>
+                                        <th>Dirección</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $cont = 1;
+                                    @endphp
+                                    @foreach ($ganadoresGeneral as $ganador)
                                         <tr>
-                                            <th>#</th>
-                                            <th>Número de empleado</th>
-                                            <th>Nombre</th>
-                                            <th>Regalo</th>
-                                            <th>Dirección</th>
+                                            <td>{{ $cont }}</td>
+                                            <td>{{ $ganador['numero_empleado'] }}</td>
+                                            <td>{{ $ganador['nombre_empleado'] }}</td>
+                                            <td>{{ $ganador['nombre_regalo'] }}</td>
+                                            <td>{{ $ganador['direccion'] }}</td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
                                         @php
-                                            $cont = 1;
+                                            $cont++;
                                         @endphp
-                                        @foreach ($ganadoresGeneral as $ganador)
-                                            <tr>
-                                                <td>{{ $cont }}</td>
-                                                <td>{{ $ganador['numero_empleado'] }}</td>
-                                                <td>{{ $ganador['nombre_empleado'] }}</td>
-                                                <td>{{ $ganador['nombre_regalo'] }}</td>
-                                                <td>{{ $ganador['direccion'] }}</td>
-                                            </tr>
-                                            @php
-                                                $cont++;
-                                            @endphp
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
+
     </div>
+
 </body>
 
 </html>

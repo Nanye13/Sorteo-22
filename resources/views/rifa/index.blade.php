@@ -418,9 +418,9 @@
     </style>
 </head>
 
-<body class="antialiased" style="height: 200px; background-image: url(img/Banner2.jpg);background-repeat: no-repeat; background-size: cover;">
+<body class="antialiased" style="height: 200px; background-image: url(img/Banner.jpg);background-repeat: repeat;background-position: top;">
 
-    <header >
+    <header style="height: 100px">
 
     </header>
 
@@ -440,18 +440,18 @@
             <div class="card" style="background-color: transparent">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-sm-6">
-                            <div class="card mb-3">
+                        <div class="col-sm-5">
+                            <div class="card mb-3" style="background-color: transparent; color: white; border-color: white">
                                 <div class="row g-0">
                                     <div class="col-md-2">
 
-                                        <img src="img/ganador1.webp" class="img-fluid rounded-start" alt="...">
+                                        <img src="img/ganador1.webp"  class="img-fluid rounded-start" alt="...">
                                     </div>
                                     <div class="col-md-10">
                                         <div class="card-body">
                                             <h5 class="card-title" style="font-family:Poppins ">GANADOR</h5>
                                             <div class="table-responsive">
-                                                <table class="table">
+                                                <table class="table" style="color: white;font-weight: bold;">
                                                     <thead>
                                                         <tr>
                                                             <th style="font-family:Poppins">No. Empleado</th>
@@ -475,8 +475,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="card mb-3 opacity-50">
+
+                        <div class="col-sm-2">
+                        </div>
+
+                        <div class="col-sm-5">
+                            <div class="card mb-3" style="background-color: transparent; color: white;border-color: white">
                                 <div class="row g-0">
                                     <div class="col-md-2">
                                         <img src="img/reglo.webp" class="img-fluid rounded-start" alt="...">
@@ -485,7 +489,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title" style="font-family:Poppins">REGALO</h5>
                                             <div>
-                                                <table class="table">
+                                                <table class="table" style="color: white; font-weight: bold">
                                                     <tr>
                                                         <th style="font-family:Poppins">Descripción</th>
                                                     </tr>
@@ -505,13 +509,13 @@
                     </div>
                     {{-- Lista de Ganadores --}}
                     <div class="card-transparent" >
-                        <div class="card-header" style="background-color: gray">
-                            <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES
+                        <div class="card-header" style="background-color: #212529">
+                            <h5 class="card-title" style="font-family:Poppins; text-align: center; color: white;">LISTA DE GANADORES
                             </h5>
                         </div>
                         <div class="card-body " >
                             <div class="table-responsive">
-                                <table class="table table-striped" >
+                                <table class="table table-striped table-dark" >
                                     <thead>
                                         <tr>
                                             <th>Número de empleado</th>
