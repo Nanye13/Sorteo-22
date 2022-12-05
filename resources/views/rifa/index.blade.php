@@ -430,14 +430,14 @@
         <div class="container-fluid" style="background-color: transparent">
             <div style="margin-bottom: 15px; text-align: center">
                 <div class="d-grid gap-2 d-md-block">
-                    <a type="button" class="btn btn-success btn-lg" onclick="location.href = '/empezar'">Iniciar Rifa
+                    <a type="button" class="btn btn-lg" onclick="location.href = '/empezar'" style="background-color: #CD853F; color: white">Iniciar Rifa
                         General</a>
-                    <a type="button" class="btn btn-info btn-lg" style="color: white;"
+                    <a type="button" class="btn btn-lg" style="color: white;background-color: #DAA520;border-block-color: white"
                         onclick="location.href = '/especial'">Iniciar Rifa Especial</a>
                 </div>
             </div>
 
-            <div class="card" style="background-color: transparent">
+            {{-- <div class="card" style="background-color: transparent">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-5">
@@ -507,7 +507,7 @@
                             </div>
                         </div>
                     </div>
-                    {{-- Lista de Ganadores --}}
+                    
                     <div class="card-transparent" >
                         <div class="card-header" style="background-color: #212529">
                             <h5 class="card-title" style="font-family:Poppins; text-align: center; color: white;">LISTA DE GANADORES
@@ -537,7 +537,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
         {{-- </div> --}}
     </div>

@@ -279,9 +279,9 @@
         .antialiased {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            background-image: url(img/fondo.jpg);
-            background-repeat: no-repeat;
-            background-size: cover;
+            background-image: url(img/Banner.jpg);
+            background-repeat: repeat;
+            background-position: top;
         }
 
         .w-5 {
@@ -419,7 +419,7 @@
 </head>
 
 <body class="antialiased">
-    <header style="height: 200px">
+    <header style="height: 80px">
 
     </header>
     <div class="container-fluid">
@@ -435,11 +435,7 @@
 
 
                 <?php else : ?>
-                <!-- <a href="/sorteoEspecial">INICIAR</a> -->
-                <!-- Button trigger modal -->
-
-                {{-- <input type='button' class="btn btn-success" style="margin-bottom: 10px;" value='Seguir'
-                    onclick="location.href = '/sorteoEspecial'" /> --}}
+                
                 <input type='button' class="btn btn-success btn-lg" style="margin-bottom: 10px;" value='Seguir'
                     onclick="abrir()" />
 
@@ -451,7 +447,7 @@
 
             </div>
         </div>
-        <div class="card">
+        <div class="card-transparent">
             <div class="card-body">
                 <!-- Modal -->
                 <div class="modal fade gif" id="gif" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -466,9 +462,11 @@
                                     aria-label="Close"></button>
                             </div> --}}
                             <div class="modal-body"
-                                style="background-image: url(img/confetti2.gif);background-size: cover; background-position: 50%">
-
-                                <img src="img/tombola.gif" alt="">
+                                style="background-image: url(img/f4.jpg);background-size: 700px;background-repeat: no-repeat">
+                                <div style="background-image: url(img/serpentina5.gif);background-size: 400px">
+                                    <img src="img/tombola.gif" alt="">
+                                </div>
+                                
                             </div>
                             {{-- <div class="modal-footer">
 
@@ -478,8 +476,8 @@
                 </div>
                 {{-- Fin modal --}}
                 <div class="row">
-                    <div class="col-sm-6">
-                        <div class="card mb-3">
+                    <div class="col-sm-5">
+                        <div class="card mb-3" style="background-color: transparent; color: white; border-color: white">
                             <div class="row g-0">
                                 <div class="col-md-2">
 
@@ -489,7 +487,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title" style="font-family:Poppins ">GANADOR</h5>
                                         <div class="table-responsive">
-                                            <table class="table">
+                                            <table class="table" style="color: white;font-weight: bold;">
                                                 <thead>
                                                     <tr>
                                                         <th style="font-family:Poppins">No. Empleado</th>
@@ -515,8 +513,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="card mb-3">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="card mb-3" style="background-color: transparent; color: white;border-color: white">
                             <div class="row g-0">
                                 <div class="col-md-2">
                                     <img src="img/reglo.webp" class="img-fluid rounded-start" alt="...">
@@ -525,7 +525,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title" style="font-family:Poppins">REGALO</h5>
                                         <div>
-                                            <table class="table">
+                                            <table class="table" style="color: white; font-weight: bold">
                                                 <tr>
                                                     <th style="font-family:Poppins">Descripción</th>
                                                 </tr>
@@ -545,13 +545,13 @@
                     </div>
                 </div>
                 {{-- Lista de Ganadores --}}
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES</h5>
+                <div class="card-transparent">
+                    <div class="card-header" style="background-color: #212529">
+                        <h5 class="card-title" style="font-family:Poppins; text-align: center; color: white;">LISTA DE GANADORES</h5>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-striped table-dark">
                                 <thead>
                                     <tr>
                                         <th>Número de empleado</th>

@@ -275,9 +275,9 @@
         .antialiased {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            background-image: url(img/fondo.jpg);
-            background-repeat: no-repeat;
-            background-size: cover;
+            background-image: url(img/Banner.jpg);
+            background-repeat: repeat;
+            background-position: top;
         }
 
         .w-5 {
@@ -415,8 +415,8 @@
 </head>
 
 <body class="antialiased">
-    <header style="height: 200px">
-
+    <header style="height: 80px">
+        <h1 style="color:#efb810; text-align: center; padding-top: 10px">¡Felicidades a todas y todos los ganadores!</h1>
     </header>
     <div class="container-fluid">
         <div style="margin-bottom: 15px; text-align: center">
@@ -426,17 +426,17 @@
                 <a href="pdfEspecial" type="button" class="btn btn-outline-warning btn-lg ">Imprimir</a>  
             </div>
         </div>
-        <div class="card">
+        <div class="card-transparent">
             <div class="card-body">
                 
                 {{-- Lista de Ganadores --}}
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES</h5>
+                <div class="card-transparent">
+                    <div class="card-header" style="background-color: #212529">
+                        <h5 class="card-title" style="font-family:Poppins; text-align: center; color: white">LISTA DE GANADORES</h5>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-striped table-dark">
                                 <thead>
                                     <tr>
                                         <th>Número de empleado</th>

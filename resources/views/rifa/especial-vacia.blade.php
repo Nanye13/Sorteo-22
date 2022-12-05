@@ -447,9 +447,11 @@
                                  aria-label="Close"></button>
                          </div> --}}
                             <div class="modal-body"
-                                style="background-image: url(img/confetti2.gif);background-size: cover; background-position: 50%">
-
-                                <img src="img/tombola.gif" alt="">
+                                style="background-image: url(img/f4.jpg);background-size: 700px;background-repeat: no-repeat">
+                                <div style="background-image: url(img/serpentina5.gif);background-size: 400px">
+                                    <img src="img/tombola.gif" alt="">
+                                </div>
+                                
                             </div>
                             {{-- <div class="modal-footer">
 
@@ -504,7 +506,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title" style="font-family:Poppins">REGALO</h5>
                                         <div>
-                                            <table class="table">
+                                            <table class="table" style="color: white;font-weight: bold;">
                                                 <tr>
                                                     <th style="font-family:Poppins">Descripción</th>
                                                 </tr>
@@ -523,13 +525,13 @@
                     </div>
                 </div>
                 {{-- Lista de Ganadores --}}
-                <div class="card">
-                    <div class="card-header">
+                {{-- <div class="card" style="background-color: transparent; color: white;border-color: white">
+                    <div class="card-header" style="background-color: #212529">
                         <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES</h5>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-striped table-dark">
                                 <thead>
                                     <tr>
                                         <th>Número de empleado</th>
@@ -549,7 +551,7 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
 

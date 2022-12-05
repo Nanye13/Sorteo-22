@@ -513,7 +513,7 @@
                     </div>
                 </div>
                 {{-- Lista de Ganadores --}}
-                <div class="card-transparent">
+                {{-- <div class="card-transparent">
                     <div class="card-header" style="background-color: #212529">
                         <h5 class="card-title" style="font-family:Poppins; text-align: center; color: white;">LISTA DE GANADORES
                         </h5>
@@ -542,7 +542,7 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
