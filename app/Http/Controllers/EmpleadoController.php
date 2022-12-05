@@ -7,6 +7,9 @@ use App\Models\Ganador;
 use App\Models\Regalo;
 use Illuminate\Http\Request;
 use PDF;
+use App\Exports\GanadoresExport;
+use App\Exports\GanadorGeneralExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EmpleadoController extends Controller
 {
@@ -28,20 +31,9 @@ class EmpleadoController extends Controller
             $cantidadRegalos = count(Regalo::where('ganador', 'N')->where('especial', 'N')->get());
             srand(time());
             $arregloRegalo = [];
-            // while (count($arregloGanadores) <= $cantidadRegalos) {
-            //     $numero_jugador = rand(1,$cantidadJugadores);
-            //     $numero_regalo = rand(1,$cantidadRegalos);
-            //     // if (!in_array($numero_jugador,$arregloGanadores) ) {
-            //         array_push($arregloGanadores, $empleados[$numero_jugador]);
-            //         array_push($arregloRegalo,$regalos[$numero_regalo]);
-            //     // }
-            // }
             $numero_jugador = rand(0, $cantidadJugadores - 1);
             $numero_regalo = rand(0, $cantidadRegalos - 1);
-            //array_push($arregloGanadores, $empleados[$numero_jugador]);
-            //array_push($arregloRegalo,$regalos[$numero_regalo]);
-
-
+            // EMPLEADO
             $numero_empleado = $empleados[$numero_jugador]->numero_empleado;
             $empleado = Empleado::find($numero_empleado);
             $empleado->ganador = "S";
@@ -53,6 +45,7 @@ class EmpleadoController extends Controller
             $regalo->ganador = "S";
             $regalo->save();
             date_default_timezone_set('America/Mexico_City');
+            // GANADOR
             $ganador = Ganador::create([
                 "numero_empleado" => $empleado->numero_empleado,
                 "nombre_empleado" => $empleado->nombre_empleado,
@@ -192,19 +185,10 @@ class EmpleadoController extends Controller
             $cantidadRegalos = count(Regalo::where('ganador', 'N')->where('especial', 'N')->get());
             srand(time());
             $arregloRegalo = [];
-            // while (count($arregloGanadores) <= $cantidadRegalos) {
-            //     $numero_jugador = rand(1,$cantidadJugadores);
-            //     $numero_regalo = rand(1,$cantidadRegalos);
-            //     // if (!in_array($numero_jugador,$arregloGanadores) ) {
-            //         array_push($arregloGanadores, $empleados[$numero_jugador]);
-            //         array_push($arregloRegalo,$regalos[$numero_regalo]);
-            //     // }
-            // }
+           
             $numero_jugador = rand(0, $cantidadJugadores - 1);
             $numero_regalo = rand(0, $cantidadRegalos - 1);
-            //array_push($arregloGanadores, $empleados[$numero_jugador]);
-            //array_push($arregloRegalo,$regalos[$numero_regalo]);
-
+            
 
             $numero_empleado = $empleados[$numero_jugador]->numero_empleado;
             $empleado = Empleado::find($numero_empleado);
@@ -251,14 +235,16 @@ class EmpleadoController extends Controller
             $dir = Ganador::orderBy('nombre_empleado')->where('direccion', $direccion->direccion)->where('especial','N')->get();
             array_push($ganadoresD, $dir);
         }
-
+        $cantidadGanador = Ganador::where('especial', 'N')->get();
+        $cantidad_regalos = count($cantidadGanador);
+        
         $ganadoresEspeciales = [];
         foreach ($direccionesEspeciales as $direc) {
             $dire = Ganador::orderBy('nombre_empleado')->where('direccion', $direc->direccion)->where('especial','S')->get();
             array_push($ganadoresEspeciales, $dire);
         }
 
-        $pdf = PDF::loadView('pdf/todosganadores', ['direcciones' => $ganadoresD,'especiales'=>$ganadoresEspeciales])->setPaper('carta', 'landscape');
+        $pdf = PDF::loadView('pdf/todosganadores', ['direcciones' => $ganadoresD,'especiales'=>$ganadoresEspeciales,'regalos'=>$cantidad_regalos])->setPaper('carta', 'landscape');
         return $pdf->stream();
         
 
@@ -273,6 +259,12 @@ class EmpleadoController extends Controller
         $pdf = PDF::loadView('pdf/ganadoresEspecial', ['especiales'=>$ganadoresEspeciales])->setPaper('carta', 'landscape');
         return $pdf->stream();
         
+    }
+    // excel
+    public function exportExcel(){
+        // return Excel::download(new GanadoresExport, 'ganadores.xlsx');
+        return Excel::download(new GanadorGeneralExport, 'ganadores.xlsx');
+
     }
     /**
      * Show the form for creating a new resource.

@@ -36,5 +36,9 @@ Route::get('ganadoresEsp', [EmpleadoController::class, 'ganadoresEspecial'])->na
 Route::get('pdfGeneral',[EmpleadoController::class,'createPDFGenerales'])->name('pdfGeneral');
 Route::get('pdfEspecial',[EmpleadoController::class,'pdfEspecial'])->name('pdfEspecial');
 
+Route::get('excel',[EmpleadoController::class,'exportExcel'])->name('excel');
+
+
+
 
 

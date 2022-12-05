@@ -81,8 +81,15 @@
                     <td> &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;  </td>
                 </tr>
             @endforeach
-        @endforeach
+    
+            <tr>
+                <td colspan="5" style="text-align: right">Total {{ $direccion[0]->direccion }} : <strong>{{ count($direccion) }}</strong></td>
 
+            </tr>
+        @endforeach
+        <tr>
+            <td colspan="5"> <strong>Total de Ganadores: {{ $regalos}}</strong></td>
+        </tr>
     </table>
     <hr>
     <h3 style="text-align: center">LISTA DE GANADORES DE REGALOS ESPECIALES</h3>
@@ -112,7 +119,6 @@
         @endforeach
 
     </table>
-
 </body>
 
 </html>

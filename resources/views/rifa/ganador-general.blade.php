@@ -423,7 +423,7 @@
     </style>
 </head>
 
-<body class="antialiased" style="background-image: url(img/Banner.jpg);background-repeat: repeat;background-position: top;">
+<body class="antialiased" style="background-image: url(img/Banner.jpg);background-repeat: repeat;background-position: top;background-size: auto">
 
 
     <header style="height: 100px">
@@ -437,7 +437,9 @@
                 <a type="button" class="btn btn-info btn-lg" style="color: white;"
                     onclick="location.href = 'especial'">Iniciar Rifa Especial</a>
                 <a href="pdfGeneral" type="button" class="btn btn-outline-warning btn-lg ">Imprimir</a>
+                <a href="excel" type="button">excel</a>
             </div>
+           
         </div>
         <div class="card-transparent">
             {{-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">

@@ -557,6 +557,7 @@
                                         <th>Número de empleado</th>
                                         <th>Nombre</th>
                                         <th>Regalo</th>
+                                        <th>Dirección</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -565,6 +566,7 @@
                                             <td> {{ $ganador['numero_empleado'] }}</td>
                                             <td>{{ $ganador['nombre_empleado'] }}</td>
                                             <td>{{ $ganador['nombre_regalo'] }}</td>
+                                            <td>{{$ganador['direccion']}}</td>
                                         </tr>
                                     @endforeach
 
