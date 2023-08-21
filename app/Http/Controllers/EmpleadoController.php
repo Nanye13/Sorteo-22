@@ -11,6 +11,10 @@ use App\Exports\GanadoresExport;
 use App\Exports\GanadorGeneralExport;
 use Maatwebsite\Excel\Facades\Excel;
 
+// DESARROLLO 
+// Desarrolladora: Nancy Yesenia Ojeda Perez
+// Desarrollo Direccion de Tecnologias
+
 class EmpleadoController extends Controller
 {
     /**
@@ -34,7 +38,7 @@ class EmpleadoController extends Controller
             $numero_jugador = rand(0, $cantidadJugadores - 1);
             $numero_regalo = rand(0, $cantidadRegalos - 1);
             // EMPLEADO
-            $numero_empleado = $empleados[$numero_jugador]->numero_empleado;
+            $numero_empleado = $empleados[$numero_jugador]->id;
             $empleado = Empleado::find($numero_empleado);
             $empleado->ganador = "S";
             $empleado->especial = 'N';
@@ -52,11 +56,10 @@ class EmpleadoController extends Controller
                 "nombre_regalo" => $regalo->nombre_regalo,
                 "direccion" => $empleado->direccion,
                 "puesto" => $empleado->puesto,
-                "fecha_hora" => date('y-m-d H:i:s'),
-                "ronda" => 1,
+                // "fecha_hora" => date('y-m-d H:i:s'),
                 "especial" => $regalo->especial == 'S' ? 'S' : 'N'
             ]);
-            $arregloGanadores = Ganador::where('especial', 'N')->orderBy('fecha_hora', 'DESC')->get();
+            $arregloGanadores = Ganador::where('especial', 'N')->orderBy('created_at', 'DESC')->get();
             $cantGanadores = count($arregloGanadores);
             // $contador = $contador + 1;
             return view('rifa.rifa-general', compact('empleado', 'regalo', 'arregloGanadores', 'cant', 'numero_regalos', 'numero_regalo', 'cantidadRegalos','cantGanadores'));
@@ -80,30 +83,32 @@ class EmpleadoController extends Controller
     public function vaciaGeneral()
     {
 
-        $regalo = Regalo::where('ganador', 'S')->where('especial', 'N')->get();
-        foreach ($regalo as $re) {
-            // $id = $regalo->find($re->id);
-            $reg = Regalo::find($re->id);
-            $reg->ganador = 'N';
-            $reg->save();
-        }
-        $empleado = Empleado::where('ganador', 'S')->where('especial', 'N')->get();
+        // $regalo = Regalo::where('ganador', 'S')->where('especial', 'N')->get();
+        // foreach ($regalo as $re) {
+        //     // $id = $regalo->find($re->id);
+        //     $reg = Regalo::find($re->id);
+        //     $reg->ganador = 'N';
+        //     $reg->save();
+        // }
+        // $empleado = Empleado::where('ganador', 'S')->where('especial', 'N')->get();
 
-        foreach ($empleado as $emp) {
-            $emple = Empleado::find($emp->numero_empleado);
-            $emple->ganador = 'N';
-            $emple->especial = '';
-            $emple->save();
-        }
+        // foreach ($empleado as $emp) {
+        //     $emple = Empleado::find($emp->id);
+        //     $emple->ganador = 'N';
+        //     $emple->especial = '';
+        //     $emple->save();
+        // }
 
 
-        $ganador = Ganador::where('especial', 'N')->get();
-        $eliminar = Ganador::destroy(($ganador));
+        // $ganador = Ganador::where('especial', 'N')->get();
+        // $eliminar = Ganador::destroy(($ganador));
         return view('rifa.index');
     }
     public function especiales()
     {
-        $regalos_especiales = Regalo::where('ganador', 'N')->where('especial', 'S')->get();
+        //$regalos_especiales = Regalo::where('ganador', 'N')->where('especial', 'S')->get();
+        $regalos_especiales = Regalo::where('ganador', 'N')->where('especial', 'S')->orderBy('id', 'ASC')->get();
+        // return $regalos_especiales;
         $cantidad_regalos = count($regalos_especiales);
         if (count($regalos_especiales) > 0) {
             $empleados = Empleado::where('ganador', 'N')->get();
@@ -112,14 +117,15 @@ class EmpleadoController extends Controller
             srand(time());
             $arregloRegalo = [];
             $numero_jugador = rand(0, $cantidadJugadores - 1);
-            $numero_regalo = rand(0, $cantidadRegalos - 1);
-            $numero_empleado = $empleados[$numero_jugador]->numero_empleado;
+            //$numero_regalo = rand(0, $cantidadRegalos - 1);
+            $numero_empleado = $empleados[$numero_jugador]->id;
             $empleado = Empleado::find($numero_empleado);
-            $empleado->ganador = "S";
-            $empleado->especial = "S";
+            $empleado->ganador = 'S';
+            $empleado->especial = 'S';
             $empleado->save();
             // Regalo
-            $numero_regalos = $regalos_especiales[$numero_regalo]->id;
+            $numero_regalos =  $regalos_especiales[0]->id;//$regalos_especiales[$numero_regalo]->id;
+            
             $regalo = Regalo::find($numero_regalos);
             $regalo->ganador = "S";
             $regalo->save();
@@ -129,7 +135,7 @@ class EmpleadoController extends Controller
                 "nombre_regalo" => $regalo->nombre_regalo,
                 "direccion" => $empleado->direccion,
                 "puesto" => $empleado->puesto,
-                "ronda" => 1,
+                // "ronda" => 1,
                 "especial" => $regalo->especial == 'S' ? 'S' : 'N'
             ]);
 
@@ -149,25 +155,25 @@ class EmpleadoController extends Controller
     public function vaciaEspecial()
     {
 
-        $regalo = Regalo::where('ganador', 'S')->where('especial', 'S')->get();
-        foreach ($regalo as $re) {
-            // $id = $regalo->find($re->id);
-            $reg = Regalo::find($re->id);
-            $reg->ganador = 'N';
-            $reg->save();
-        }
-        $empleado = Empleado::where('ganador', 'S')->where('especial', 'S')->get();
+        // $regalo = Regalo::where('ganador', 'S')->where('especial', 'S')->get();
+        // foreach ($regalo as $re) {
+        //     // $id = $regalo->find($re->id);
+        //     $reg = Regalo::find($re->id);
+        //     $reg->ganador = 'N';
+        //     $reg->save();
+        // }
+        // $empleado = Empleado::where('ganador', 'S')->where('especial', 'S')->get();
 
-        foreach ($empleado as $emp) {
-            $emple = Empleado::find($emp->numero_empleado);
-            $emple->ganador = 'N';
-            $emple->especial = '';
-            $emple->save();
-        }
+        // foreach ($empleado as $emp) {
+        //     $emple = Empleado::find($emp->id);
+        //     $emple->ganador = 'N';
+        //     $emple->especial = '';
+        //     $emple->save();
+        // }
 
 
-        $ganador = Ganador::where('especial', 'S')->get();
-        $eliminar = Ganador::destroy(($ganador));
+        // $ganador = Ganador::where('especial', 'S')->get();
+        // $eliminar = Ganador::destroy(($ganador));
         return view('rifa.especial-vacia');
     }
     public function generarTodos()
@@ -207,7 +213,7 @@ class EmpleadoController extends Controller
                 "nombre_regalo" => $regalo->nombre_regalo,
                 "direccion" => $empleado->direccion,
                 "puesto" => $empleado->puesto,
-                "ronda" => 1,
+                // "ronda" => 1,
                 "especial" => $regalo->especial == 'S' ? 'S' : 'N'
             ]);
 
@@ -245,7 +251,8 @@ class EmpleadoController extends Controller
         }
 
         $pdf = PDF::loadView('pdf/todosganadores', ['direcciones' => $ganadoresD,'especiales'=>$ganadoresEspeciales,'regalos'=>$cantidad_regalos])->setPaper('carta', 'landscape');
-        return $pdf->stream();
+        // return $pdf->stream();
+        return $pdf->download('Ganadores2022.pdf');
         
 
     }

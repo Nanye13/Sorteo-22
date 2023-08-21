@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+<!-- // DESARROLLO 
+// Desarrolladora: Nancy Yesenia Ojeda Perez
+// Desarrollo Direccion de Tecnologias -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -442,8 +444,7 @@
                 <?php endif ?>
 
                 <!-- <a href="/especial">Limpiar</a> -->
-                <input type='button' class="btn btn-warning" style="margin-bottom: 10px;" value='Limpiar'
-                    onclick="location.href = '/especial'" />
+              
 
             </div>
         </div>
@@ -574,10 +575,13 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                </div>  
             </div>
         </div>
-
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <input type='button' class="btn btn-warning" style="margin-bottom: 10px; " value='Limpiar'
+                    onclick="location.href = '/especial'" />
+                </div>
     </div>
 </body>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

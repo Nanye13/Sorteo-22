@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- // DESARROLLO 
+// Desarrolladora: Nancy Yesenia Ojeda Perez
+// Desarrollo Direccion de Tecnologias -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

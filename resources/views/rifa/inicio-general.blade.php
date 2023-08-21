@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+<!-- // DESARROLLO 
+// Desarrolladora: Nancy Yesenia Ojeda Perez
+// Desarrollo Direccion de Tecnologias -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -431,7 +433,6 @@
                 <button id="continuar" class="btn btn-success btn-lg">Empezar</button>
                 {{-- <a type="button" class="btn btn-info btn-lg" onclick="location.href = 'todos'">Rifar todos</a> --}}
 
-                <a type="button" class="btn btn-warning btn-lg" onclick="location.href = 'inicio'">Limpiar</a>
 
                 <!-- <a type="button" class="btn btn-info btn-lg" style="color: white;" onclick="location.href = '/especial'">Iniciar Rifa Especial</a> -->
             </div>
@@ -544,6 +545,10 @@
                     </div>
                 </div> --}}
             </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+        <a type="button"  onclick="location.href = 'inicio'">Limpiar</a>
         </div>
     </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
