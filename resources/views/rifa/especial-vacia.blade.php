@@ -281,7 +281,7 @@
         .antialiased {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            background-image: url(img/Banner.jpg);
+            /* background-image: url(img/Banner.jpg); */
             background-repeat: repeat;
             background-position: top;
         }
@@ -462,7 +462,7 @@
                     </div>
                 </div>
                 {{-- Fin modal --}}
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-sm-6">
                         <div class="card mb-3"  style="background-color: transparent; color: white; border-color: white" >
                             <div class="row g-0">
@@ -525,7 +525,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 {{-- Lista de Ganadores --}}
                 {{-- <div class="card" style="background-color: transparent; color: white;border-color: white">
                     <div class="card-header" style="background-color: #212529">
@@ -563,16 +563,18 @@
         function abrir() {
             let audioEtiqueta = document.querySelector("audio");
             //console.log("entro")
-            $('#gif').modal('show');
+            // $('#gif').modal('show');
             // audioEtiqueta.setAttribute("src", "img/sonido_especial.mp3");
             audioEtiqueta.setAttribute("src", "img/sonido5.mp3");
             audioEtiqueta.play();
             //abrir modal
-            setTimeout(() => {
-                $('#gif').modal('hide');
+            // setTimeout(() => {
+            //     $('#gif').modal('hide');
 
-                window.location.href = "{{ route('sorteoEspecial') }}";
-            }, 5000);
+            //     window.location.href = "{{ route('sorteoEspecial') }}";
+            // }, 5000);
+            window.location.href = "{{ route('sorteoEspecial') }}";
+
         }
     </script>
 </body>

@@ -11,6 +11,7 @@ class GanadorGeneralExport implements FromView
 {
     public function view(): View
     {
+        // Consulta a la base de datos para traer los ganadores por direccion
         $direcciones = Ganador::orderBy('direccion')->select('direccion')->distinct()->get();
         $ganadoresD = [];
         foreach ($direcciones as $direccion) {

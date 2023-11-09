@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Ganadores 2022</title>
+    <title>Lista de Ganadores 2023</title>
     <style>
         #tabla {
             font-family: Arial, Helvetica, sans-serif;
@@ -48,7 +48,7 @@
      
              <h2>&nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; 
                 FISCALÍA GENERAL DEL ESTADO DE QUERÉTARO</h2>
-             <h3> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;LISTA DE GANADORES DE REGALOS ESPECIALES 2022</h3>
+             <h3> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;LISTA DE GANADORES DE REGALOS ESPECIALES 2023</h3>
     
       
     </th>

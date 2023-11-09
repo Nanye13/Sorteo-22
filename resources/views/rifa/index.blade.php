@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<!-- // DESARROLLO 
+<!-- // DESARROLLO
 // Desarrolladora: Nancy Yesenia Ojeda Perez
 // Desarrollo Direccion de Tecnologias -->
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -409,6 +410,7 @@
                 color: #6b7280;
                 color: rgba(107, 114, 128, var(--tw-text-opacity))
             }
+
         }
     </style>
 
@@ -417,10 +419,72 @@
             /* font-family: 'Nunito', sans-serif; */
             font-family: Poppins;
         }
+
+        /* .cubo div {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border: 2px solid #222;
+
+        }
+
+        .cubo .cara1 {
+            -webkit-transform: translateZ(60px);
+            background-color: palevioletred;
+        }
+
+        .cubo .cara2 {
+            -webkit-transform: rotateY(90deg) translateZ(60px);
+        }
+
+        .cubo .cara3 {
+            -webkit-transform: rotateY(90deg) rotateX(90deg) translateZ(60px);
+            background-color: green;
+       
+
+        }
+
+        .cubo .cara4 {
+            -webkit-transform: rotateY(180deg) rotateZ(90deg) translateZ(60px);
+       
+
+        }
+
+        .cubo .cara5 {
+            -webkit-transform: rotateY(-90deg) rotateZ(90deg) translateZ(60px);
+        }
+
+        .cubo .cara6 {
+            -webkit-transform: rotateX(-90deg) translateZ(60px);
+            background-color: #DAA520;
+
+        }
+
+        @-webkit-keyframes rotacubo {
+            0% {
+                -webkit-transform: rotateX(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotateX(360deg);
+            }
+        }
+
+        .animacubo {
+            -webkit-animation-name: rotacubo;
+            -webkit-animation-timing-function: linear;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-duration: 12s;
+            -webkit-transform-style: preserve-3d;
+            -webkit-transform-origin: 60px 60px 0;
+        } */
     </style>
 </head>
 
-<body class="antialiased" style="height: 200px; background-image: url(img/Banner.jpg);background-repeat: repeat;background-position: top;">
+{{-- <body class="antialiased" style="height: 200px; background-image: url(img/Banner.jpg);background-repeat: repeat;background-position: top;"> --}}
+
+<body class="antialiased">
+
 
     <header style="height: 100px">
 
@@ -429,17 +493,34 @@
 
     {{-- <div class="conatiner-fluid"> --}}
 
-        <div class="container-fluid" style="background-color: transparent">
-            <div style="margin-bottom: 15px; text-align: center">
-                <div class="d-grid gap-2 d-md-block">
-                    <a type="button" class="btn btn-lg" onclick="location.href = '/empezar'" style="background-color: #CD853F; color: white">Iniciar Rifa
-                        General</a>
-                    <a type="button" class="btn btn-lg" style="color: white;background-color: #DAA520;border-block-color: white"
-                        onclick="location.href = '/especial'">Iniciar Rifa Especial</a>
+    <div class="container-fluid" style="background-color: transparent">
+        <div style="margin-bottom: 15px; text-align: center">
+            <div class="d-grid gap-2 d-md-block">
+                <a type="button" class="btn btn-lg"  onclick="location.href = '/empezar'"
+                    style="background-color: #CD853F; color: white">
+                    General</a>
+                <a type="button" class="btn btn-lg"
+                    style="color: white;background-color: #DAA520;border-block-color: white"
+                    onclick="location.href = '/especial'">Especial</a>
+            </div>
+        </div>
+        {{-- <div class="card">
+            <div class="card-body">
+                <div class="cubo animacubo">
+                    <div class="cara1"></div>
+                    <div class="cara2"></div>
+                    <div class="cara3"></div>
+                    <div class="cara4"></div>
+                    <div class="cara5"></div>
+                    <div class="cara6"></div>
                 </div>
             </div>
+        </div> --}}
 
-            {{-- <div class="card" style="background-color: transparent">
+
+
+
+        {{-- <div class="card" style="background-color: transparent">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-5">
@@ -543,6 +624,12 @@
 
         {{-- </div> --}}
     </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script>
+       
+    </script>
+
 </body>
 
 </html>

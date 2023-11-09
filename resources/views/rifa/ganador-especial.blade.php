@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<!-- // DESARROLLO 
+<!-- // DESARROLLO
 // Desarrolladora: Nancy Yesenia Ojeda Perez
 // Desarrollo Direccion de Tecnologias -->
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,10 +12,14 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
     </script>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap"
+        rel="stylesheet">
     <!-- Styles -->
     <style>
         /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -277,7 +282,7 @@
         .antialiased {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            background-image: url(img/Banner.jpg);
+            /* background-image: url(img/Banner.jpg); */
             background-repeat: repeat;
             background-position: top;
         }
@@ -418,23 +423,26 @@
 
 <body class="antialiased">
     <header style="height: 80px">
-        <h1 style="color:#efb810; text-align: center; padding-top: 10px">¡Felicidades a todas y todos los ganadores!</h1>
+        <h1 style="color:#efb810; text-align: center; padding-top: 10px">¡Felicidades a todas y todos los ganadores!
+        </h1>
     </header>
     <div class="container-fluid">
         <div style="margin-bottom: 15px; text-align: center">
             <div class="d-grid gap-2 d-md-block">
-                <a type="button" class="btn btn-success btn-lg" onclick="location.href = '/empezar'">Iniciar Rifa General</a>
-                <a type="button" class="btn btn-info btn-lg" style="color: white;" onclick="location.href = '/especial'">Iniciar Rifa Especial</a>
-                <a href="pdfEspecial" type="button" class="btn btn-outline-warning btn-lg ">Imprimir</a>  
+                {{-- <a type="button" class="btn btn-success btn-lg" onclick="location.href = '/empezar'">Iniciar
+                    General</a>
+                <a type="button" class="btn btn-info btn-lg" style="color: white;"
+                    onclick="location.href = '/especial'">Iniciar Especial</a> --}}
+                {{-- <a href="pdfEspecial" type="button" class="btn btn-outline-warning btn-lg ">Imprimir</a> --}}
             </div>
         </div>
-        <div class="card-transparent">
-            <div class="card-body">
-                
-                {{-- Lista de Ganadores --}}
-                <div class="card-transparent">
+        {{-- <div class="card-transparent">
+            <div class="card-body"> --}}
+
+        {{-- Lista de Ganadores --}}
+        {{-- <div class="card-transparent">
                     <div class="card-header" style="background-color: #212529">
-                        <h5 class="card-title" style="font-family:Poppins; text-align: center; color: white">LISTA DE GANADORES</h5>
+                        <h5 class="card-title" style="font-family:Poppins; text-align: center; color: white">LISTA</h5>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -449,22 +457,131 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($ganadoresGeneral as $ganador)
-                                    <tr>
-                                        <td> {{$ganador['numero_empleado']}}</td>
-                                        <td>{{$ganador['nombre_empleado']}}</td>
-                                        <td>{{$ganador['direccion']}}</td>
-                                        <td> {{$ganador['nombre_regalo']}}</td>
-                                    </tr>
+                                        <tr>
+                                            <td> {{ $ganador['numero_empleado'] }}</td>
+                                            <td>{{ $ganador['nombre_empleado'] }}</td>
+                                            <td>{{ $ganador['direccion'] }}</td>
+                                            <td> {{ $ganador['nombre_regalo'] }}</td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
+
             </div>
+        </div> --}}
+
+
+
+        {{-- podio de ganadores --}}
+
+
+        <div class="row">
+            {{-- Ganador 2 --}}
+            <div class="col-4">
+                <div class="card" style="text-align: center">
+                    <div style="text-align:-webkit-center">
+                    <img src="img/gana2.gif" width="270px" alt="..." >
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="card-text">
+                            <label for=""
+                                style="font-weight: bold">{{ $ganadoresGeneral[1]['direccion'] }}</label>
+                            <br>
+                            <label for="">{{ $ganadoresGeneral[1]['numero_empleado'] }}</label>
+                            <br>
+                            <label for="">{{ $ganadoresGeneral[1]['nombre_empleado'] }}</label>
+                            <br>
+                            <label for=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-gift" viewBox="0 0 16 16" style="display: inline">
+                                    <path
+                                        d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zM1 4v2h6V4H1zm8 0v2h6V4H9zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5V7zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5H7z" />
+                                </svg> {{ $ganadoresGeneral[1]['nombre_regalo'] }}</label>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Ganador 1 --}}
+            <div class="col-4">
+                <div class="card" style="text-align: center">
+                    <div style="text-align:-webkit-center">
+                        <img src="img/gana1.gif" width="270px" alt="...">
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="card-text">
+                            <label for=""
+                                style="font-weight: bold">{{ $ganadoresGeneral[2]['direccion'] }}</label>
+                            <br>
+                            <label for="">{{ $ganadoresGeneral[2]['numero_empleado'] }}</label>
+                            <br>
+                            <label for="">{{ $ganadoresGeneral[2]['nombre_empleado'] }}</label>
+                            <br>
+                            <label for=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-gift" viewBox="0 0 16 16" style="display: inline">
+                                    <path
+                                        d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zM1 4v2h6V4H1zm8 0v2h6V4H9zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5V7zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5H7z" />
+                                </svg> {{ $ganadoresGeneral[2]['nombre_regalo'] }}</label>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {{-- Ganador 3 --}}
+            <div class="col-4">
+                <div class="card" style="text-align: center">
+                    <div style="text-align:-webkit-center">
+                        <img src="img/gana3.gif" alt="..." width="270px">
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="card-text">
+                            <label for=""
+                                style="font-weight: bold">{{ $ganadoresGeneral[0]['direccion'] }}</label>
+                            <br>
+                            <label for="">{{ $ganadoresGeneral[0]['numero_empleado'] }}</label>
+                            <br>
+                            <label for="">{{ $ganadoresGeneral[0]['nombre_empleado'] }}</label>
+                            <br>
+                            <label for=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-gift" viewBox="0 0 16 16" style="display: inline">
+                                    <path
+                                        d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zM1 4v2h6V4H1zm8 0v2h6V4H9zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5V7zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5H7z" />
+                                </svg> {{ $ganadoresGeneral[0]['nombre_regalo'] }}</label>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
 
+
+
     </div>
+
+<script>
+ function botoninicio() {
+            window.location.href = "{{ route('general') }}";
+
+        }
+        // setTimeout(botoninicio, 5000);
+    
+   
+</script>
+
 </body>
 
 </html>

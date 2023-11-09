@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<!-- // DESARROLLO 
+<!-- // DESARROLLO
 // Desarrolladora: Nancy Yesenia Ojeda Perez
 // Desarrollo Direccion de Tecnologias -->
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -418,8 +419,10 @@
     </style>
 </head>
 
-<body class="antialiased"
-    style="background-image: url(img/Banner.jpg);background-repeat: repeat;background-position: top;">
+{{-- <body class="antialiased"
+    style="background-image: url(img/Banner.jpg);background-repeat: repeat;background-position: top;"> --}}
+
+<body class="antialiased">
 
     <header style="height: 50px">
 
@@ -430,17 +433,17 @@
 
             <div class="d-grid gap-2 d-md-block">
                 <button id="detener" class="btn btn-danger btn-lg" hidden>Detener</button>
-                <button id="continuar" class="btn btn-success btn-lg">Empezar</button>
+                <button id="continuar" class="btn btn-success btn-lg" onclick="repetir()">Empezar</button>
                 {{-- <a type="button" class="btn btn-info btn-lg" onclick="location.href = 'todos'">Rifar todos</a> --}}
 
 
                 <!-- <a type="button" class="btn btn-info btn-lg" style="color: white;" onclick="location.href = '/especial'">Iniciar Rifa Especial</a> -->
             </div>
         </div>
-        <div class="card" style="background-color: transparent">
+        {{-- <div class="card" style="background-color: transparent"> --}}
             <audio src="" autoplay></audio>
-            <div class="card-body">
-                <div class="row">
+            {{-- <div class="card-body"> --}}
+            {{-- <div class="row">
                     <div class="col-sm-5">
                         <div class="card mb-3" style="background-color: transparent; color: white; border-color: white">
                             <div class="row g-0">
@@ -512,9 +515,63 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                {{-- Lista de Ganadores --}}
-                {{-- <div class="card-transparent">
+                </div> --}}
+            {{-- 
+                <div class="row">
+
+                </div> --}}
+
+
+
+
+
+
+            {{-- 
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            {{-- Lista de Ganadores --}}
+            {{-- <div class="card-transparent">
                     <div class="card-header" style="background-color: #212529">
                         <h5 class="card-title" style="font-family:Poppins; text-align: center; color: white;">LISTA DE GANADORES
                         </h5>
@@ -544,16 +601,16 @@
                         </div>
                     </div>
                 </div> --}}
-            </div>
-        </div>
+            {{-- </div> --}}
+        {{-- </div> --}}
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
-        <a type="button"  onclick="location.href = 'inicio'">Limpiar</a>
+            <a type="button" onclick="location.href = 'inicio'">Limpiar</a>
         </div>
     </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-    <script>
+    {{-- <script>
         document.getElementById("detener").addEventListener("click", detener);
         document.getElementById("continuar").addEventListener("click", seguir);
 
@@ -573,12 +630,42 @@
             let audioEtiqueta = document.querySelector("audio");
 
             if ($('#seguir').val() == 1) {
+                $('#exampleModal').modal('show');
                 audioEtiqueta.setAttribute("src", "img/gane.mp3");
                 audioEtiqueta.play();
                 window.location.href = "{{ route('empleados') }}";
             }
         }
-        setInterval('autoFocus()', 1000);
+        setInterval('autoFocus()', 8000);
+    </script> --}}
+
+    {{-- Nuevo metodo --}}
+
+    <script>
+        let variable;
+        let repeat;
+
+        function tiempoEspera() {
+            variable = setTimeout(abrirGanador, 8000);
+            console.log("ejecutandose");
+            $('#exampleModal').modal('hide');
+            window.location.href = "{{ route('empleados') }}";
+        }
+
+        function repetir() {
+            // repeat = setInterval(tiempoEspera,4000);
+            // console.log("repetir");
+            window.location.href = "{{ route('empleados') }}";
+
+
+        }
+        // repetir();
+
+        function abrirGanador() {
+            $('#exampleModal').modal('show');
+            // alert("fulanito gano");
+            console.log("hola");
+        }
     </script>
 
 </body>

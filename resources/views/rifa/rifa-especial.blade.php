@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<!-- // DESARROLLO 
+<!-- // DESARROLLO
 // Desarrolladora: Nancy Yesenia Ojeda Perez
 // Desarrollo Direccion de Tecnologias -->
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -281,7 +282,7 @@
         .antialiased {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            background-image: url(img/Banner.jpg);
+            /* background-image: url(img/Banner.jpg); */
             background-repeat: repeat;
             background-position: top;
         }
@@ -437,170 +438,114 @@
 
 
                 <?php else : ?>
-                
+
                 <input type='button' class="btn btn-success btn-lg" style="margin-bottom: 10px;" value='Seguir'
                     onclick="abrir()" />
 
                 <?php endif ?>
 
                 <!-- <a href="/especial">Limpiar</a> -->
-              
+
 
             </div>
         </div>
-        <div class="card-transparent">
-            <div class="card-body">
-                <!-- Modal -->
-                <div class="modal fade gif" id="gif" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <audio src="" id="sonido" autoplay></audio>
+        <div class="card">
+            <div class="card-body" style="text-align: center">
+                <audio src="" id="sonido" autoplay></audio>
+                <span id="countdown" style="font-size: 70px"></span>
 
-                            {{-- <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div> --}}
-                            <div class="modal-body"
-                                style="background-image: url(img/f4.jpg);background-size: 700px;background-repeat: no-repeat">
-                                <div style="background-image: url(img/serpentina5.gif);background-size: 400px">
-                                    <img src="img/tombola.gif" alt="">
-                                </div>
-                                
-                            </div>
-                            {{-- <div class="modal-footer">
-
-                            </div> --}}
-                        </div>
-                    </div>
-                </div>
-                {{-- Fin modal --}}
-                <div class="row">
-                    <div class="col-sm-5">
-                        <div class="card mb-3" style="background-color: transparent; color: white; border-color: white">
-                            <div class="row g-0">
-                                <div class="col-md-2">
-
-                                    <img src="img/ganador1.webp" class="img-fluid rounded-start" alt="...">
-                                </div>
-                                <div class="col-md-10">
-                                    <div class="card-body">
-                                        <h5 class="card-title" style="font-family:Poppins ">GANADOR</h5>
-                                        <div class="table-responsive">
-                                            <table class="table" style="color: white;font-weight: bold;">
-                                                <thead>
-                                                    <tr>
-                                                        <th style="font-family:Poppins">No. Empleado</th>
-                                                        <th style="font-family:Poppins">Nombre</th>
-                                                        <th style="font-family:Poppins">Dirección</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td style="font-family:Poppins">{{ $empleado->numero_empleado }}
-                                                        </td>
-                                                        <td style="font-family:Poppins">{{ $empleado->nombre_empleado }}
-                                                        </td>
-                                                        <td style="font-family:Poppins">{{ $empleado->direccion }}</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                    </div>
-                    <div class="col-sm-5">
-                        <div class="card mb-3" style="background-color: transparent; color: white;border-color: white">
-                            <div class="row g-0">
-                                <div class="col-md-2">
-                                    <img src="img/reglo.webp" class="img-fluid rounded-start" alt="...">
-                                </div>
-                                <div class="col-md-10">
-                                    <div class="card-body">
-                                        <h5 class="card-title" style="font-family:Poppins">REGALO</h5>
-                                        <div>
-                                            <table class="table" style="color: white; font-weight: bold">
-                                                <tr>
-                                                    <th style="font-family:Poppins">Descripción</th>
-                                                </tr>
-                                                <tbody>
-                                                    <tr>
-                                                        <td style="font-family:Poppins">{{ $regalo->nombre_regalo }}
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <!-- <p style="font-family:Poppins">Nancy</p> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {{-- Lista de Ganadores --}}
-                <div class="card-transparent">
-                    <div class="card-header" style="background-color: #212529">
-                        <h5 class="card-title" style="font-family:Poppins; text-align: center; color: white;">LISTA DE GANADORES</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-dark">
-                                <thead>
-                                    <tr>
-                                        <th>Número de empleado</th>
-                                        <th>Nombre</th>
-                                        <th>Regalo</th>
-                                        <th>Dirección</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($arregloGanadores as $ganador)
-                                        <tr>
-                                            <td> {{ $ganador['numero_empleado'] }}</td>
-                                            <td>{{ $ganador['nombre_empleado'] }}</td>
-                                            <td>{{ $ganador['nombre_regalo'] }}</td>
-                                            <td>{{$ganador['direccion']}}</td>
-                                        </tr>
-                                    @endforeach
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>  
             </div>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">GANADOR</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <?php if(isset($empleado)): ?>
+                                    <label for="">No. Empleado: {{ $empleado->numero_empleado }}</label>
+                                    <br>
+                                    <label for="">Nombre empleado: <strong>{{ $empleado->nombre_empleado }}</strong> </label>
+                                    <br>
+                                    <label for="">Dirección: {{ $empleado->direccion }}</label>
+                                    <?php endif ?>
+                                </li>
+
+                                <li class="list-group-item">
+                                    <?php if(isset($regalo)): ?>
+                                    <label for=""><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                        height="16" fill="currentColor" class="bi bi-gift" viewBox="0 0 16 16"
+                                        style="display: inline">
+                                        <path
+                                            d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zM1 4v2h6V4H1zm8 0v2h6V4H9zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5V7zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5H7z" />
+                                    </svg> Regalo: <strong>{{ $regalo->nombre_regalo }}</strong></label>
+                                    <?php endif ?>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <input type='button' class="btn btn-warning" style="margin-bottom: 10px; " value='Limpiar'
-                    onclick="location.href = '/especial'" />
-                </div>
+            <input type='button' class="btn btn-warning" style="margin-bottom: 10px; " value='Limpiar'
+                onclick="location.href = '/especial'" />
+        </div>
     </div>
 </body>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
-    function abrir() {
-        //console.log("entro")
-        let audioEtiqueta = document.querySelector("audio");
+    window.onload = updateClock;
+    var totalTime = 5;
 
-        $('#gif').modal('show');
-        // audioEtiqueta.setAttribute("src", "img/sonido_especial.mp3");
-        audioEtiqueta.setAttribute("src", "img/sonido5.mp3");
+    function updateClock() {
+        document.getElementById('countdown').innerHTML = totalTime;
+        if (totalTime == 0) {
+            // alert('Final');
+            $('#exampleModal').modal('show');
 
+        } else {
+            let audioEtiqueta = document.querySelector("audio");
+            audioEtiqueta.setAttribute("src", "img/sonido5.mp3");
             audioEtiqueta.play();
-        //abrir modal
-        setTimeout(() => {
-            $('#gif').modal('hide');
-            window.location.href = "{{ route('sorteoEspecial') }}";
-        }, 5000);
+            
+            totalTime -= 1;
+            setTimeout("updateClock()", 1000);
+        }
     }
+
+    function abrir() {
+        window.location.href = "{{ route('sorteoEspecial') }}";
+    }
+
+
+    // function abrir() {
+    //     //console.log("entro")
+    //     let audioEtiqueta = document.querySelector("audio");
+
+    //     $('#gif').modal('show');
+    //     // audioEtiqueta.setAttribute("src", "img/sonido_especial.mp3");
+    //     audioEtiqueta.setAttribute("src", "img/sonido5.mp3");
+
+    //         audioEtiqueta.play();
+    //     //abrir modal
+    //     setTimeout(() => {
+    //         $('#gif').modal('hide');
+    //         window.location.href = "{{ route('sorteoEspecial') }}";
+    //     }, 5000);
+    // }
 </script>
 
 </html>

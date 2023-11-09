@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<!-- // DESARROLLO 
+<!-- // DESARROLLO
 // Desarrolladora: Nancy Yesenia Ojeda Perez
 // Desarrollo Direccion de Tecnologias -->
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -425,23 +426,25 @@
     </style>
 </head>
 
-<body class="antialiased" style="background-image: url(img/Banner.jpg);background-repeat: repeat;background-position: top;background-size: auto">
+{{-- <body class="antialiased" style="background-image: url(img/Banner.jpg);background-repeat: repeat;background-position: top;background-size: auto"> --}}
+
+<body>
 
 
-    <header style="height: 100px">
-       <h1 style="color:#efb810; text-align: center; padding-top: 10px">¡Felicidades a todas y todos los ganadores!</h1>
+    <header style="height: 100px; text-align: center">
+        <label style="color:#efb810; text-align: center; padding-top: 10px; font-size: 50px;font-weight: bold">¡Felicidades a todas y todos los ganadores!</label>
     </header>
     <div class="container-fluid">
         <div style="margin-bottom: 15px; text-align: center">
             <div class="d-grid gap-2 d-md-block">
-                <a type="button" class="btn btn-success btn-lg" onclick="location.href = 'empezar'">Iniciar Rifa
+                {{-- <a type="button" class="btn btn-success btn-lg" onclick="location.href = 'empezar'">
                     General</a>
                 <a type="button" class="btn btn-info btn-lg" style="color: white;"
-                    onclick="location.href = 'especial'">Iniciar Rifa Especial</a>
-                <a href="pdfGeneral" type="button" class="btn btn-outline-warning btn-lg ">Imprimir</a>
-                <a href="excel" type="button">excel</a>
+                    onclick="location.href = 'especial'">Especial</a> --}}
+                <a href="pdfGeneral" type="button" class="btn btn-outline-warning btn-lg " id="imprime" style="display: none">Imprimir</a>
+                {{-- <a href="excel" type="button">excel</a> --}}
             </div>
-           
+
         </div>
         <div class="card-transparent">
             {{-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -451,11 +454,11 @@
                 {{-- Lista de Ganadores --}}
                 <div class="card-transparent" style="color: white">
                     <div class="card-header" style="background-color: #212529">
-                        <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES
-                        </h5>
+                        {{-- <h5 class="card-title" style="font-family:Poppins; text-align: center">LISTA DE GANADORES
+                        </h5> --}}
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive" >
+                        {{-- <div class="table-responsive" >
                             <table class="table table-striped table-dark">
                                 <thead>
                                     <tr>
@@ -484,6 +487,31 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                        </div> --}}
+                        @php
+                            $cont = 1;
+                        @endphp
+                         <div style="overflow-y: scroll;height: 450px;font-size: 35px;" id="gana">
+                            @foreach ($ganadoresGeneral as $ganador)
+                                <div class="shadow-sm p-3 mb-1 bg-body-tertiary rounded" style="color: black">
+                                    <span class="badge rounded-pill text-bg-dark"> {{ $cont }}</span>
+                                    <span style="font-weight: bold"> {{ $ganador['nombre_empleado'] }}</span>
+                                    <br>
+                                    <span>Dirección: {{ $ganador['direccion'] }}</span>
+                                      
+                                    <br>
+                                    <label for=""><svg xmlns="http://www.w3.org/2000/svg" width="30"
+                                            height="30" fill="currentColor" class="bi bi-gift" viewBox="0 0 16 16"
+                                            style="display: inline">
+                                            <path
+                                                d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zM1 4v2h6V4H1zm8 0v2h6V4H9zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5V7zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5H7z" />
+                                        </svg> {{ $ganador['nombre_regalo'] }} </label>
+
+                                </div>
+                                @php
+                                    $cont++;
+                                @endphp
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -491,7 +519,20 @@
         </div>
 
     </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
+    <script>
+        $("#gana").animate({
+            scrollTop: $('#gana')[0].scrollHeight
+        }, 15000);
+      
+        setTimeout(imprime, 15000);
+        function imprime(){
+            $('#imprime').show();
+        }
+
+
+    </script>
 </body>
 
 </html>
