@@ -6,6 +6,8 @@ use App\Models\Empleado;
 use App\Models\Ganador;
 use App\Models\Regalo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use PDF;
 
 class JugadorController extends Controller
 {
@@ -105,7 +107,7 @@ class JugadorController extends Controller
                 "nombre_empleado" => $empleado->nombre_empleado,
                 "nombre_regalo" => $regalo->nombre_regalo,
                 "direccion" => $empleado->direccion,
-                "puesto" => $empleado->puesto,
+                // "puesto" => $empleado->puesto,
                 // "ronda" => 1,
                 "especial" => $regalo->especial == 'S' ? 'S' : 'N'
             ]);
@@ -160,7 +162,7 @@ class JugadorController extends Controller
         foreach ($empleado as $emp) {
             $emple = Empleado::find($emp->id);
             $emple->ganador = 'N';
-            $emple->especial = '';
+            $emple->especial = 'N';
             $emple->save();
         }
 
@@ -202,54 +204,119 @@ class JugadorController extends Controller
     }
     public function rifageneral()
     {
-        // Consulta de regalos disponibles
-        $regalos = Regalo::where('ganador', 'N')->where('especial', 'N')->get();
-        // Cantidad de regalos
-        $cant = count($regalos);
-        // $contador = 0;
-        for ($i = 0; $i < $cant; $i++) {
 
-            // $empleados = Empleado::get();
-            $empleados = Empleado::where('ganador', 'N')->get();
-            $cantidadJugadores = count(Empleado::where('ganador', 'N')->get());
-            $cantidadRegalos = count(Regalo::where('ganador', 'N')->where('especial', 'N')->get());
-            $regalosid = Regalo::where('ganador', 'N')->where('especial', 'N')->get();
-            // Gneneracion de numeros random
-            srand(time());
-            $arregloRegalo = [];
-            $numero_jugador = rand(0, $cantidadJugadores - 1);
-            $numero_regalo = rand(0, $cantidadRegalos - 1);
-
-            // EMPLEADO
-            $numero_empleado = $empleados[$numero_jugador]->id;
-            $empleado = Empleado::find($numero_empleado);
-            $empleado->ganador = "S";
-            $empleado->especial = 'N';
-            $empleado->save();
-            // Regalo
-            $numero_regalos = $regalosid[$numero_regalo]->id;
-            $regalo = Regalo::find($numero_regalos);
-            $regalo->ganador = "S";
-            $regalo->save();
-            date_default_timezone_set('America/Mexico_City');
-            // GANADOR
-            $ganador = Ganador::create([
-                "numero_empleado" => $empleado->numero_empleado,
-                "nombre_empleado" => $empleado->nombre_empleado,
-                "nombre_regalo" => $regalo->nombre_regalo,
-                "direccion" => $empleado->direccion,
-                "puesto" => $empleado->puesto,
-                // "fecha_hora" => date('y-m-d H:i:s'),
-                "especial" => $regalo->especial == 'S' ? 'S' : 'N'
-            ]);
-            $arregloGanadores = Ganador::where('especial', 'N')->orderBy('created_at', 'DESC')->get();
-            $cantGanadores = count($arregloGanadores);
+        // Generacion de arreglo de numeros aleatorios para empleados
+        $rand = range(1, 1491);
+        shuffle($rand);
+        $arreglo = array();
+        foreach ($rand as $val) {
+            array_push($arreglo, $val);
         }
-        $ganadoresGeneral = Ganador::where('especial', 'N')->get();
-        return view('rifa.ganador-general', compact('ganadoresGeneral'));
+        //    Generacion de atteglo de numeros aletarios para regalos
+        $num = range(1, 443);
+        shuffle($num);
+        $arregloregalo = array();
+        foreach ($num as $valor) {
+            array_push($arregloregalo, $valor);
+        }
+
+        $ganadores = array();
+
+        for ($i = 0; $i <= 442; $i++) {
+
+            // Empleado
+            $empleado = Empleado::find($arreglo[$i]);
+            // Regalo
+            $regalo = Regalo::find($arregloregalo[$i]);
+           
+            array_push($ganadores, ["empleado" => $empleado, "regalo" => $regalo]);
+        }
+
+        // return $ganadores;
+        file_put_contents('archivo/listaGanadores.json', json_encode($ganadores));
+  
+        return view('rifa.ganadores', compact('ganadores'));
     }
 
-    
+    public static function guardarbase()
+    {
+        $data = file_get_contents("archivo/listaGanadores.json");
+        $ganadores = json_decode($data, true);
+
+
+        foreach ($ganadores as $ganador) {
+            // return $ganador['empleado']['numero_empleado'];
+
+            Ganador::create([
+                "numero_empleado" => $ganador['empleado']['numero_empleado'],
+                "nombre_empleado" => $ganador['empleado']['nombre_empleado'],
+                "nombre_regalo" => $ganador['regalo']['nombre_regalo'],
+                "direccion" =>$ganador['empleado']['direccion'],
+                "especial" =>  'N'
+            ]);
+        }
+
+        // instrucccion para el pdf
+         //Recuperar todos los productos de la db
+
+       $direcciones = Ganador::orderBy('direccion')->select('direccion')->where('especial', 'N')->distinct()->get();
+       $direccionesEspeciales = Ganador::orderBy('direccion')->select('direccion')->where('especial', 'S')->distinct()->get();
+
+       $ganadoresD = [];
+       foreach ($direcciones as $direccion) {
+           $dir = Ganador::orderBy('nombre_empleado')->where('direccion', $direccion->direccion)->where('especial', 'N')->get();
+           array_push($ganadoresD, $dir);
+       }
+       $cantidadGanador = Ganador::where('especial', 'N')->get();
+       $cantidad_regalos = count($cantidadGanador);
+
+       $ganadoresEspeciales = [];
+       foreach ($direccionesEspeciales as $direc) {
+           $dire = Ganador::orderBy('nombre_empleado')->where('direccion', $direc->direccion)->where('especial', 'S')->get();
+           array_push($ganadoresEspeciales, $dire);
+       }
+
+       $pdf = PDF::loadView('pdf/todosganadores', ['direcciones' => $ganadoresD, 'especiales' => $ganadoresEspeciales, 'regalos' => $cantidad_regalos])->setPaper('carta', 'landscape');
+       // return $pdf->stream();
+       return $pdf->download('Ganadores2023.pdf');
+
+    }
+
+   // PDF GENERALES 
+   public static function createPDFGenerales()
+   {
+       //Recuperar todos los productos de la db
+
+       $direcciones = Ganador::orderBy('direccion')->select('direccion')->where('especial', 'N')->distinct()->get();
+       $direccionesEspeciales = Ganador::orderBy('direccion')->select('direccion')->where('especial', 'S')->distinct()->get();
+
+       $ganadoresD = [];
+       foreach ($direcciones as $direccion) {
+           $dir = Ganador::orderBy('nombre_empleado')->where('direccion', $direccion->direccion)->where('especial', 'N')->get();
+           array_push($ganadoresD, $dir);
+       }
+       $cantidadGanador = Ganador::where('especial', 'N')->get();
+       $cantidad_regalos = count($cantidadGanador);
+
+       $ganadoresEspeciales = [];
+       foreach ($direccionesEspeciales as $direc) {
+           $dire = Ganador::orderBy('nombre_empleado')->where('direccion', $direc->direccion)->where('especial', 'S')->get();
+           array_push($ganadoresEspeciales, $dire);
+       }
+
+       $pdf = PDF::loadView('pdf/todosganadores', ['direcciones' => $ganadoresD, 'especiales' => $ganadoresEspeciales, 'regalos' => $cantidad_regalos])->setPaper('carta', 'landscape');
+       // return $pdf->stream();
+       return $pdf->download('Ganadores2023.pdf');
+   }
+
+
+
+
+
+
+
+
+
     // Funcion para mostrar los ganadores especiales en la vista
     public static function ganadoresEspecial()
     {
@@ -297,7 +364,7 @@ class JugadorController extends Controller
                 "nombre_empleado" => $empleado->nombre_empleado,
                 "nombre_regalo" => $regalo->nombre_regalo,
                 "direccion" => $empleado->direccion,
-                "puesto" => $empleado->puesto,
+                // "puesto" => $empleado->puesto,
                 // "ronda" => 1,
                 "especial" => $regalo->especial == 'S' ? 'S' : 'N'
             ]);
@@ -325,6 +392,7 @@ class JugadorController extends Controller
             $empleados = Empleado::where('ganador', 'N')->get();
             $cantidadJugadores = count(Empleado::where('ganador', 'N')->get());
             $cantidadRegalos = count(Regalo::where('ganador', 'N')->where('especial', 'N')->get());
+            $regalosid = Regalo::where('ganador', 'N')->where('especial', 'N')->get();
             srand(time());
             $arregloRegalo = [];
 
@@ -338,7 +406,7 @@ class JugadorController extends Controller
             $empleado->especial = 'N';
             $empleado->save();
             // Regalo
-            $numero_regalos = $regalos[$numero_regalo]->id;
+            $numero_regalos = $regalosid[$numero_regalo]->id;
             $regalo = Regalo::find($numero_regalos);
             $regalo->ganador = "S";
             $regalo->save();
@@ -348,7 +416,7 @@ class JugadorController extends Controller
                 "nombre_empleado" => $empleado->nombre_empleado,
                 "nombre_regalo" => $regalo->nombre_regalo,
                 "direccion" => $empleado->direccion,
-                "puesto" => $empleado->puesto,
+                // "puesto" => $empleado->puesto,
                 // "ronda" => 1,
                 "especial" => $regalo->especial == 'S' ? 'S' : 'N'
             ]);
@@ -364,4 +432,54 @@ class JugadorController extends Controller
         // return "SE ACABO LA RIFA";
         return view('rifa.ganador-general', compact('ganadoresGeneral'));
     }
+
+    // FUNCION ORIGINAL
+    // public function rifageneral()
+    // {
+    //     // Consulta de regalos disponibles
+    //     $regalos = Regalo::where('ganador', 'N')->where('especial', 'N')->get();
+    //     // Cantidad de regalos
+    //     $cant = count($regalos);
+    //     // $contador = 0;
+    //     for ($i = 0; $i < $cant; $i++) {
+
+    //         // $empleados = Empleado::get();
+    //         $empleados = Empleado::where('ganador', 'N')->get();
+    //         $cantidadJugadores = count(Empleado::where('ganador', 'N')->get());
+    //         $cantidadRegalos = count(Regalo::where('ganador', 'N')->where('especial', 'N')->get());
+    //         $regalosid = Regalo::where('ganador', 'N')->where('especial', 'N')->get();
+    //         // Gneneracion de numeros random
+    //         srand(time());
+    //         // $arregloRegalo = [];
+    //         $numero_jugador = rand(0, $cantidadJugadores - 1);
+    //         $numero_regalo = rand(0, $cantidadRegalos - 1);
+
+    //         // EMPLEADO
+    //         $numero_empleado = $empleados[$numero_jugador]->id;
+    //         $empleado = Empleado::find($numero_empleado);
+    //         $empleado->ganador = "S";
+    //         $empleado->especial = 'N';
+    //         $empleado->save();
+    //         // Regalo
+    //         $numero_regalos = $regalosid[$numero_regalo]->id;
+    //         $regalo = Regalo::find($numero_regalos);
+    //         $regalo->ganador = "S";
+    //         $regalo->save();
+    //         date_default_timezone_set('America/Mexico_City');
+    //         // GANADOR
+    //         $ganador = Ganador::create([
+    //             "numero_empleado" => $empleado->numero_empleado,
+    //             "nombre_empleado" => $empleado->nombre_empleado,
+    //             "nombre_regalo" => $regalo->nombre_regalo,
+    //             "direccion" => $empleado->direccion,
+    //             // "puesto" => $empleado->puesto,
+    //             // "fecha_hora" => date('y-m-d H:i:s'),
+    //             "especial" => $regalo->especial == 'S' ? 'S' : 'N'
+    //         ]);
+    //         $arregloGanadores = Ganador::where('especial', 'N')->orderBy('created_at', 'DESC')->get();
+    //         $cantGanadores = count($arregloGanadores);
+    //     }
+    //     $ganadoresGeneral = Ganador::where('especial', 'N')->get();
+    //     return view('rifa.ganador-general', compact('ganadoresGeneral'));
+    // }
 }

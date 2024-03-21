@@ -18,6 +18,7 @@ class CreateRegalosTable extends Migration
         Schema::create('regalos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_regalo');
+            // $table->string('folio')->nullable();
             $table->char('ganador',1)->nullable();
             $table->char('especial',1)->nullable();
             $table->timestamps();

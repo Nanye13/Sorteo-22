@@ -423,6 +423,25 @@
             /* font-family: 'Nunito', sans-serif; */
             font-family: Poppins;
         }
+        .redondo {
+            display: block;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+        }
+        .btn-bd-especial {
+            --bs-btn-font-weight: 600;
+            --bs-btn-color: var(--bs-white);
+            --bs-btn-bg: #2C3E50;
+            --bs-btn-border-color:#164C85;
+            --bs-btn-hover-color: var(--bs-white);
+            --bs-btn-hover-bg: #164C85;
+            --bs-btn-hover-border-color: #{shade-color($bd-violet, 10%)};
+            --bs-btn-focus-shadow-rgb: var(--bs-primary);
+            --bs-btn-active-color: var(--bs-btn-hover-color);
+            --bs-btn-active-bg: var(--bs-primary);
+            --bs-btn-active-border-color: #{shade-color($bd-violet, 20%)};
+        }
     </style>
 </head>
 
@@ -432,16 +451,30 @@
 
 
     <header style="height: 100px; text-align: center">
-        <label style="color:#efb810; text-align: center; padding-top: 10px; font-size: 50px;font-weight: bold">¡Felicidades a todas y todos los ganadores!</label>
+        <label id="feli"
+            style="color:#efb810; text-align: center; padding-top: 10px; font-size: 50px;font-weight: bold; display: none">¡Felicidades
+            a todas y todos los ganadores!</label>
     </header>
     <div class="container-fluid">
         <div style="margin-bottom: 15px; text-align: center">
             <div class="d-grid gap-2 d-md-block">
+                {{-- CONTADOR --}}
+                <div style="text-align: -webkit-center" id="contador">
+                    <button class="redondo btn btn-bd-especial">
+                        <span id="countdown" style="font-size: 100px;"></span>
+
+                    </button>
+
+                </div>
+
+
+
                 {{-- <a type="button" class="btn btn-success btn-lg" onclick="location.href = 'empezar'">
                     General</a>
                 <a type="button" class="btn btn-info btn-lg" style="color: white;"
                     onclick="location.href = 'especial'">Especial</a> --}}
-                <a href="pdfGeneral" type="button" class="btn btn-outline-warning btn-lg " id="imprime" style="display: none">Imprimir</a>
+                <a href="pdfGeneral" type="button" class="btn btn-outline-warning btn-lg " id="imprime"
+                    style="display: none">Imprimir</a>
                 {{-- <a href="excel" type="button">excel</a> --}}
             </div>
 
@@ -450,7 +483,7 @@
             {{-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <a href="pfdGeneral" type="button" class="btn btn-outline-warning ">Imprimir</a>
               </div> --}}
-            <div class="card-body">
+            <div class="card-body" id="listagana" style="display: none">
                 {{-- Lista de Ganadores --}}
                 <div class="card-transparent" style="color: white">
                     <div class="card-header" style="background-color: #212529">
@@ -491,14 +524,14 @@
                         @php
                             $cont = 1;
                         @endphp
-                         <div style="overflow-y: scroll;height: 450px;font-size: 35px;" id="gana">
+                        <div style="overflow-y: scroll;height: 500px;font-size: 35px;" id="gana">
                             @foreach ($ganadoresGeneral as $ganador)
                                 <div class="shadow-sm p-3 mb-1 bg-body-tertiary rounded" style="color: black">
                                     <span class="badge rounded-pill text-bg-dark"> {{ $cont }}</span>
                                     <span style="font-weight: bold"> {{ $ganador['nombre_empleado'] }}</span>
                                     <br>
                                     <span>Dirección: {{ $ganador['direccion'] }}</span>
-                                      
+
                                     <br>
                                     <label for=""><svg xmlns="http://www.w3.org/2000/svg" width="30"
                                             height="30" fill="currentColor" class="bi bi-gift" viewBox="0 0 16 16"
@@ -522,16 +555,36 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
     <script>
-        $("#gana").animate({
-            scrollTop: $('#gana')[0].scrollHeight
-        }, 15000);
-      
-        setTimeout(imprime, 15000);
-        function imprime(){
-            $('#imprime').show();
+        window.onload = updateClock;
+        var totalTime = 5;
+
+        function updateClock() {
+            document.getElementById('countdown').innerHTML = totalTime;
+            if (totalTime == 0) {
+                $('#feli').show();
+                $('#listagana').show();
+
+                $('#contador').hide();
+
+                $("#gana").animate({
+                    scrollTop: $('#gana')[0].scrollHeight
+                }, 15000);
+
+                setTimeout(imprime, 15000);
+
+                function imprime() {
+                    $('#imprime').show();
+                }
+
+            } else {
+                // let audioEtiqueta = document.querySelector("audio");
+                // audioEtiqueta.setAttribute("src", "img/sonido5.mp3");
+                // audioEtiqueta.play();
+
+                totalTime -= 1;
+                setTimeout("updateClock()", 1000);
+            }
         }
-
-
     </script>
 </body>
 

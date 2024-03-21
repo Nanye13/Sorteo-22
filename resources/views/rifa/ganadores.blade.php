@@ -29,7 +29,12 @@
         }
 
         body {
-            margin: 0
+            margin: 0;
+            /* background-image: url(img/f1.png); */
+            /* background-position: center center; */
+            background-repeat: no-repeat;
+            /* background-attachment: fixed; */
+            background-size: cover;
         }
 
         a {
@@ -282,9 +287,9 @@
         .antialiased {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            /* background-image: url(img/Banner.jpg); */
-            background-repeat: repeat;
-            background-position: top;
+            /* background-image: url(img/fondo1.jpg);
+            background-repeat: no-repeat;
+            background-size: cover; */
         }
 
         .w-5 {
@@ -421,18 +426,18 @@
 
         .redondo {
             display: block;
-            width: 150px;
-            height: 150px;
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
         }
 
         .btn-bd-especial {
             --bs-btn-font-weight: 600;
             --bs-btn-color: var(--bs-white);
-            --bs-btn-bg:  #2C3E50;
+            --bs-btn-bg: #2C3E50;
             --bs-btn-border-color: #164C85;
             --bs-btn-hover-color: var(--bs-white);
-            --bs-btn-hover-bg:  #164C85;
+            --bs-btn-hover-bg: #164C85;
             --bs-btn-hover-border-color: #{shade-color($bd-violet, 10%)};
             --bs-btn-focus-shadow-rgb: var(--bs-primary);
             --bs-btn-active-color: var(--bs-btn-hover-color);
@@ -442,104 +447,132 @@
     </style>
 </head>
 
-<body class="antialiased">
-    <header style="height: 80px">
+{{-- <body class="antialiased" style="background-image: url(img/Banner.jpg);background-repeat: repeat;background-position: top;background-size: auto"> --}}
 
+<body>
+
+
+    <header style="height: 100px; text-align: center">
+        <label id="feli"
+            style="color:#efb810; text-align: center; padding-top: 10px; font-size: 50px;font-weight: bold; display: none">¡Felicidades
+            a todas y todos los ganadores!</label>
     </header>
     <div class="container-fluid">
-
-
-
-        <div class="row" style="align-content:center">
-            <div class="col-12">
-
-                <div class="row">
-                    <div class="col-2">
-                        <img src="img/regaespecial.gif" alt="" class="img-fluid rounded-start" width="300px">
-
-                    </div>
-                    <div class="col-10" style="text-align: left">
-                        <label for=""style="font-size: 50px">Regalo: </label>
-                        <br>
-                        <label for="" style="font-size: 65px">{{ $regalo->nombre_regalo }}</label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-
-            <div class="col-12">
-                <div style="text-align: -webkit-center; margin: 25px">
-                    <button type="button" class="redondo btn btn-bd-especial" onclick="abrir()" style="text-align: -webkit-center;"><svg
-                            xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor"
-                            class="bi bi-caret-right" viewBox="0 0 16 16">
-                            <path
-                                d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
-                        </svg></button>
-
-                </div>
-
-            </div>
-
-
-
-
-        </div>
-    </div>
-
-
-    {{-- <div style="margin-bottom: 15px; text-align: center">
+        <div style="margin-bottom: 15px; text-align: center">
             <div class="d-grid gap-2 d-md-block">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="img/regagif.gif" alt="" width="270px">
+                {{-- CONTADOR --}}
+                <div style="text-align: -webkit-center" id="contador">
+                    <button class="redondo btn btn-bd-especial">
+                        <span id="countdown" style="font-size: 100px;"></span>
 
-                            </div>
-                            <div class="col-8" style="text-align: left">
-                                <label for=""style="font-size: 50px">Regalo: </label>
-                                <br>
-                                <label for="" style="font-size: 65px">{{ $regalo->nombre_regalo }}</label>
-                            </div>
-                        </div>
+                    </button>
 
-
-
-                    </div>
                 </div>
-                <div class="card">
 
-                   
-                    <div class="card-body" style="text-align: -webkit-center;" >
-                        <button type="button" class="redondo btn btn-bd-especial" onclick="abrir()"></button>
-                    </div>
-                </div>
-                <br>
-             
+
+                <a href="pdfGeneral" type="button" class="btn btn-outline-warning btn-lg " id="imprime"
+                    style="display: none">Imprimir</a>
 
             </div>
-        </div> --}}
+
+        </div>
+        <div class="card-transparent">
+
+            <div class="card-body" id="listagana" style="display: none">
+                {{-- Lista de Ganadores --}}
+                <div class="card-transparent" style="color: white">
+                    <div class="card-header" style="background-color: #212529">
+
+                    </div>
+                    <div class="card-body">
+
+                        @php
+                            $cont = 1;
+                        @endphp
+                        <div style="overflow-y: scroll;height: 500px;font-size: 35px;" id="gana"
+                            style="color: black">
+                            @foreach ($ganadores as $ganador)
+                                <div class="shadow-sm p-3 mb-1 bg-body-tertiary rounded" style="color: black">
+                                    <span class="badge rounded-pill text-bg-dark"> {{ $cont }}</span>
+                                    <span style="font-weight: bold">{{ $ganador['empleado']->nombre_empleado }}</span>
+                                    <br>
+                                    <span>Dirección: {{ $ganador['empleado']->direccion }}</span>
+
+                                    <br>
+                                    <label for=""><svg xmlns="http://www.w3.org/2000/svg" width="30"
+                                            height="30" fill="currentColor" class="bi bi-gift" viewBox="0 0 16 16"
+                                            style="display: inline">
+                                            <path
+                                                d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zM1 4v2h6V4H1zm8 0v2h6V4H9zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5V7zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5H7z" />
+                                        </svg> {{ $ganador['regalo']->nombre_regalo }} </label>
+
+                                </div>
+                                @php
+                                    $cont++;
+                                @endphp
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
     <script>
-        function abrir() {
-            let audioEtiqueta = document.querySelector("audio");
-            //console.log("entro")
-            // $('#gif').modal('show');
-            // audioEtiqueta.setAttribute("src", "img/sonido_especial.mp3");
-            // audioEtiqueta.setAttribute("src", "img/sonido5.mp3");
-            // audioEtiqueta.play();
-            //abrir modal
-            // setTimeout(() => {
-            //     $('#gif').modal('hide');
+        window.onload = updateClock;
+        var totalTime = 5;
 
-            //     window.location.href = "{{ route('sorteoEspecial') }}";
-            // }, 5000);
-            window.location.href = "{{ route('rifaEspecial') }}";
+        function updateClock() {
+            document.getElementById('countdown').innerHTML = totalTime;
+            if (totalTime == 0) {
+                $('#feli').show();
+                $('#listagana').show();
 
+                $('#contador').hide();
+
+                $("#gana").animate({
+                    scrollTop: $('#gana')[0].scrollHeight
+                }, 15000);
+
+                setTimeout(imprime, 15000);
+
+                function imprime() {
+                    $('#imprime').show();
+                }
+
+            } else {
+                // let audioEtiqueta = document.querySelector("audio");
+                // audioEtiqueta.setAttribute("src", "img/sonido5.mp3");
+                // audioEtiqueta.play();
+
+                totalTime -= 1;
+                setTimeout("updateClock()", 1000);
+            }
+
+
+            document.addEventListener("keypress", function(event) {
+                if (event.keyCode == 13) {
+                    // alert('hi.');
+                    $("#gana").stop(true);
+
+                }
+                
+             
+
+            });
+            document.addEventListener("keypress", function(event) {
+                if (event.keyCode == 32) {
+                    // alert('seguir');
+                    $("#gana").animate({
+                    scrollTop: $('#gana')[0].scrollHeight},15000);
+          
+                    
+
+
+                }
+            });
         }
     </script>
 </body>

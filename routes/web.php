@@ -34,7 +34,10 @@ Route::get('sorteoEspecial', [EmpleadoController::class, 'especiales'])->name('s
 Route::get('ganadoresGe', [EmpleadoController::class, 'ganadoresGeneral'])->name('ganadoresGe');
 Route::get('ganadoresEsp', [EmpleadoController::class, 'ganadoresEspecial'])->name('ganadoresEsp');
 
-Route::get('pdfGeneral',[EmpleadoController::class,'createPDFGenerales'])->name('pdfGeneral');
+// Route::get('pdfGeneral',[EmpleadoController::class,'createPDFGenerales'])->name('pdfGeneral');
+// nuevo pdf
+Route::get('pdfGeneral',[JugadorController::class,'guardarbase'])->name('pdfGeneral');
+
 Route::get('pdfEspecial',[EmpleadoController::class,'pdfEspecial'])->name('pdfEspecial');
 
 Route::get('excel',[EmpleadoController::class,'exportExcel'])->name('excel');
@@ -50,12 +53,16 @@ Route::get('rifaEspecialmitad', [JugadorController::class, 'rifaespecialesmitad'
 
 
 Route::get('general', [JugadorController::class, 'iniciogeneral'])->name('general');
+// RUTA DE LOS GANADORES
 Route::get('rifageneral', [JugadorController::class, 'rifageneral'])->name('rifageneral');
+
+
 Route::get('ganadoresEspeciales', [JugadorController::class, 'ganadoresEspecial'])->name('ganadoresEspeciales');
 
 
 Route::get('resetGeneral',[JugadorController::class,'resetGeneral'])->name('resetGeneral');
 Route::get('resetEspecial',[JugadorController::class,'resetEspecial'])->name('resetEspecial');
+// ruta para la vista de botones del reset
 Route::get('/reset', function () {
     return view('newViews.reset');
 });

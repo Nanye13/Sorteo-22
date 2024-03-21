@@ -23,7 +23,7 @@ class CreateGanadoresTable extends Migration
             $table->string('nombre_empleado');
             $table->string('nombre_regalo');
             $table->string('direccion');
-            $table->string('puesto');
+            // $table->string('puesto');
             $table->char('especial',1);
             $table->timestamps();
         });

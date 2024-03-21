@@ -21,7 +21,7 @@ class CreateEmpleadosTable extends Migration
             $table->integer('numero_empleado');
             $table->string('nombre_empleado');
             $table->string('direccion');
-            $table->string('puesto');
+            // $table->string('puesto');
             $table->char('ganador',1);
             $table->char('especial',1)->nullable();
             $table->timestamps();

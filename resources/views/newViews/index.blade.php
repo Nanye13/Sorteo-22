@@ -451,7 +451,7 @@
     </style>
 </head>
 
-{{-- <body class="antialiased" style="height: 200px; background-image: url(img/Banner.jpg);background-repeat: repeat;background-position: top;"> --}}
+{{-- <body class="antialiased" style="height: 200px; background-image: url(img/Edificio.png);background-repeat: repeat;background-position: top;"> --}}
 
 <body class="antialiased">
 
